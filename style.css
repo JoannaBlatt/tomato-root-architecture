@@ -42,7 +42,7 @@ h3{
 }
 
 .samples{
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
 }
 
@@ -52,9 +52,23 @@ h3{
 }
 
 .sample-images{
-    height: 50%
+    height: 80%
 }
 
 .graph{
     background-color: var(--my-white);
+    margin: 10%;
+}
+
+.upload{
+    background-color: var(--my-red);
+    color: var(--my-white);
+    padding: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5em;
 }

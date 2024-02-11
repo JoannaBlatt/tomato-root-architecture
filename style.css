@@ -44,6 +44,8 @@ h3{
 .samples{
     margin-top: 30px;
     width: 100%;
+    border-spacing: 20px;
+    border-collapse: separate;
 }
 
 .sample-titles{
@@ -51,8 +53,12 @@ h3{
     font-size: 1.5em;
 }
 
+th{
+    width: 33.3%;
+}
+
 .sample-images{
-    height: 80%
+    height: 300px;
 }
 
 .graph{

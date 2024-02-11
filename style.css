@@ -40,3 +40,21 @@ h3{
     padding-right: 15%;
     margin: 0;
 }
+
+.samples{
+    margin-top: 50px;
+    width: 100%;
+}
+
+.sample-titles{
+    height: 10%;
+    font-size: 1.5em;
+}
+
+.sample-images{
+    height: 50%
+}
+
+.graph{
+    background-color: var(--my-white);
+}

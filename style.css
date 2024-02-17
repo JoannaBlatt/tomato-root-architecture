@@ -10,6 +10,8 @@
     --green: #538D7C;
     --red: #C16E70;
     --blue:#272838;
+    --blue-hover: #989898;
+    --red-hover: #835859;
   }
 
 body {
@@ -38,7 +40,7 @@ h1 {
 
 .menu{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     background-color:var(--white);
 }
 
@@ -47,7 +49,7 @@ h3{
     background-color: var(--white);
     text-align: center;
     font-size: 1.5em;
-    width: 10%;
+    padding: 10px;
     padding-top: 0;
     padding-bottom: 20px;
     margin: 0;
@@ -63,10 +65,12 @@ h3{
 .sample-titles{
     height: 10%;
     font-size: 1.5em;
+    font-weight: normal;
 }
 
-th{
+.img-title{
     width: 33.3%;
+    font-weight: normal;
 }
 
 .sample-images{
@@ -91,12 +95,26 @@ th{
     font-size: 1.5em;
 }
 
+.upload:hover{
+    background-color: var(--red-hover);
+}
+
 .sprout-image{
     display: block;
-    width:20%;
-    margin: 0 auto;
+    width:40%;
+    margin-left: auto;
+    padding: 0;
 }
 
 .header-text{
-    width: 100%
+    width: 60%;
+}
+
+.title {
+    display: flex;
+    justify-content: left;
+}
+
+.menu-button:hover {
+    color: var(--blue-hover)
 }

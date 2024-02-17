@@ -1,3 +1,10 @@
+.libre-franklin-mainfont {
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
 :root {
     --my-white: #F9F8F8;
     --my-green: #538D7C;
@@ -6,7 +13,7 @@
   }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Libre Franklin", Arial, sans-serif;
     background-color: var(--my-blue);
     color: var(--my-white);
     margin: 0;

@@ -118,3 +118,7 @@ h3{
 .menu-button:hover {
     color: var(--blue-hover)
 }
+
+.cur-page {
+    color: var(--blue-hover)
+}

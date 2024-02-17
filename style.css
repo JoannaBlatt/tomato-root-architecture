@@ -33,6 +33,7 @@ h1 {
     text-align: center;
     padding-top: 25px;
     font-weight: normal;
+    font-size: 2em;
 }
 
 .menu{
@@ -45,7 +46,8 @@ h3{
     color: var(--blue);
     background-color: var(--white);
     text-align: center;
-    width: 20%;
+    font-size: 1.5em;
+    width: 10%;
     padding-top: 0;
     padding-bottom: 20px;
     margin: 0;

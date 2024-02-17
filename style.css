@@ -122,3 +122,7 @@ h3{
 .cur-page {
     color: var(--blue-hover)
 }
+
+a{
+    text-decoration: none;
+}

@@ -90,3 +90,13 @@ th{
     border: none;
     font-size: 1.5em;
 }
+
+.sprout-image{
+    display: block;
+    width:20%;
+    margin: 0 auto;
+}
+
+.header-text{
+    width: 100%
+}

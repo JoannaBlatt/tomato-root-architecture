@@ -113,16 +113,20 @@ a{
 
 .home-body{
     height: 83%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
 }
 
 .samples{
     margin-top: 30px;
+    height: 100%;
     width: 100%;
     border-spacing: 20px;
     border-collapse: separate;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    flex-flow: row wrap;
 }
 
 .sample-titles{
@@ -138,11 +142,15 @@ a{
 
 .sample-images{
     height: 300px; /* TO BE FIXED W REAL IMAGES */
+    width: 300px;
+    /*max-height: 100%;
+    max-width: 100%;*/
 }
 
 .graph{
     background-color: var(--white);
     margin: 10%;
+    padding: 150px;
 }
 
 .upload{

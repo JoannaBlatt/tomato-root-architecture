@@ -16,7 +16,7 @@ def main():
     n_m.write_null_models_file()
     print("creating pareto drawings using pareto_functions.py")
     for arbor in os.listdir(RECONSTRUCTIONS_DIR):
-        print(arbor)
+        print("reconstructing arbor:",arbor)
         G = read_arbor_full(arbor)
         pf.viz_front(G)
         pf.viz_trees(G)

@@ -107,6 +107,7 @@ a{
     align-items: center;
     justify-content: center;
     height: 7%;
+    margin-top: 10px;
 }
 
 /*HOME BODY STYLE*/
@@ -114,6 +115,8 @@ a{
 .home-body{
     height: 83%;
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .samples{
@@ -126,7 +129,6 @@ a{
     justify-content: space-around;
     flex-grow: 1;
     align-items: center;
-    flex-flow: row wrap;
 }
 
 .sample-titles{

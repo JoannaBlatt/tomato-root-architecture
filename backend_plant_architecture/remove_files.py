@@ -8,11 +8,15 @@ from constants import *
 def remove_files(directory):
     """removes all files from a given directory
     """
-    for fname in directory:
-        print("removing file:", fname)
-        os.remove(directory+"/"+fname)
+    for file in os.listdir(directory):
+        print("removing file:", file, "from directory:",directory)
+        full_name = directory+"/"+file
+        os.remove(directory+"/"+file)
 def remove_all_files():
     """removes files from all directories in the necessary_dir_list"""
+    # print("testing with null models directory")
+    # for file in os.listdir(STATISTICS_DIR):
+    #     os.remove(STATISTICS_DIR+"/"+file)
     for directory in NECESSARY_DIR_LIST:
         print("directory name where files will be removed:", directory)
         remove_files(directory)

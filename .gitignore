@@ -1,1 +1,5 @@
 backend_plant_architecture/data/architecture-data/arbor-reconstructions/
+backend_plant_architecture/data/results/null-models/
+backend_plant_architecture/data/results/statistics/
+backend_plant_architecture/data/results/pareto-fronts/
+backend_plant_architecture/figs/drawings/pareto-front-drawings/

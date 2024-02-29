@@ -12,6 +12,7 @@ def remove_files(directory):
         print("removing file:", fname)
         os.remove(directory+"/"+fname)
 def remove_all_files():
+    """removes files from all directories in the necessary_dir_list"""
     for directory in NECESSARY_DIR_LIST:
         print("directory name where files will be removed:", directory)
         remove_files(directory)

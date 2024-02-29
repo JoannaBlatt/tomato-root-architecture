@@ -6,20 +6,23 @@ import pareto_functions as pf
 import os
 from constants import *
 from read_arbor_reconstruction import read_arbor_full
+import remove_files
 
 def main():
-    print("analyzing arbors using analyze_arbors.py")
-    a_arbors.analyze_arbors()
-    a_arbors.write_scaling_dists()
-    print("creating nulls models files using null_models.py")
-    n_m.analyze_null_models()
-    n_m.write_null_models_file()
-    print("creating pareto drawings using pareto_functions.py")
-    for arbor in os.listdir(RECONSTRUCTIONS_DIR):
-        print("reconstructing arbor:",arbor)
-        G = read_arbor_full(arbor)
-        pf.viz_front(G)
-        pf.viz_trees(G)
+    # print("analyzing arbors using analyze_arbors.py")
+    # a_arbors.analyze_arbors()
+    # a_arbors.write_scaling_dists()
+    # print("creating nulls models files using null_models.py")
+    # n_m.analyze_null_models()
+    # n_m.write_null_models_file()
+    # print("creating pareto drawings using pareto_functions.py")
+    # for arbor in os.listdir(RECONSTRUCTIONS_DIR):
+    #     print("reconstructing arbor:",arbor)
+    #     G = read_arbor_full(arbor)
+    #     pf.viz_front(G)
+    #     pf.viz_trees(G)
+    print("testing remove files")
+    remove_files.remove_all_files()
  
 if __name__ == '__main__':
     main()

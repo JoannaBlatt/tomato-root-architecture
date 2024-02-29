@@ -1,5 +1,5 @@
 from math import sqrt
-from backend_plant_architecture.utils import *
+from utils import *
 import networkx as nx
 from scipy.spatial.distance import euclidean
 import numpy as np

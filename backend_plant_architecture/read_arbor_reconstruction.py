@@ -1,6 +1,6 @@
 import networkx as nx
 from scipy.spatial.distance import euclidean
-from backend_plant_architecture.utils import *
+from utils import *
 from constants import RECONSTRUCTIONS_DIR, DRAWINGS_DIR
 import os
 import pandas as pd

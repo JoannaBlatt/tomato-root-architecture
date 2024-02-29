@@ -2,7 +2,7 @@ import numpy as np
 import pareto_functions as pf
 from collections import defaultdict
 import optimal_midpoint as om
-from backend_plant_architecture.utils import toy_network, toy_network2, draw_arbor
+from utils import toy_network, toy_network2, draw_arbor
 from constants import *
 from read_arbor_reconstruction import read_arbor_full
 import pandas as pd

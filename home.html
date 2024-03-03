@@ -35,11 +35,23 @@
         </table>
     </div>
     <div>
-        <a href = "upload.html"><button class = "upload">Upload Here</button></a>
+        <button class = "upload" id="file-upload-button" onclick="handleFileUpload()">Upload File</button>
+        <input id="file-upload" type="file" style="display: none;" />
+
     </div>
     <div class="footer-bar">
         <h1 class = "footer-text">Dev info here</h1>
     </div>
     <!-- <script src="script.js"></script> to be used with scripting implementation-->
+    <!-- portions of the below code originated as ai generated-->
+    <script>
+        function handleFileUpload() {
+          document.getElementById('file-upload').click();
+        }
+        document.getElementById('file-upload').addEventListener('change', function() {
+          var file = this.files[0];
+          window.location.href = "upload.html";
+        });
+      </script>
 </body>
 </html>

@@ -166,6 +166,7 @@ a{
     border-radius: 10px;
     border: none;
     font-size: 1.5em;
+    cursor: pointer;
 }
 
 /*ABOUT BODY STYLE*/
@@ -201,3 +202,42 @@ a{
         padding-bottom: 20px;
         margin: 0;
     }
+
+/* UPLOAD STYLE */
+    .upload-button-container{
+        width: 100%;
+    }
+
+    .fileslider {
+        -webkit-appearance: none;
+        appearance: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 66%;
+        justify-content: center;
+        height: 20px;
+        background: var(--green);
+        outline: none;
+        border-radius: 25px;
+      }
+
+    .fileslider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border: none;
+        border-radius: 50%; 
+        background: var(--white);
+        cursor: pointer;
+    }
+
+    .fileslider::-moz-range-thumb { /*I spent so long wondering why it didn't work...It's because I'm on mozilla ;-; */
+        width: 25px;
+        height: 25px;
+        border: none;
+        border-radius: 50%;
+        background: var(--white);
+        cursor: pointer;
+      }

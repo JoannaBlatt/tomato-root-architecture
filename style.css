@@ -167,3 +167,37 @@ a{
     border: none;
     font-size: 1.5em;
 }
+
+/*ABOUT BODY STYLE*/
+
+    .about-body{
+        height: 83%;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .about-text{
+        height: 10%;
+        font-size: 1.5em;
+        font-weight: normal;
+    } 
+
+    .about-page-title{
+        margin: 0px;
+        text-align: center;
+        padding-top: 25px;
+        font-weight: normal;
+        font-size: 2em;
+    }
+    
+    .about-page-text{
+        color: var(--blue);
+        background-color: var(--white);
+        text-align: center;
+        font-size: 1.5em;
+        padding: 10px;
+        padding-top: 0;
+        padding-bottom: 20px;
+        margin: 0;
+    }

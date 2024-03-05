@@ -326,7 +326,6 @@ def viz_front(G, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
     '''
     arbor_name = G.graph['arbor name']
     pareto_front = pd.read_csv('%s/%s.csv' % (PARETO_FRONTS_DIR, arbor_name), skipinitialspace=True)
-    print(pareto_front)
     pareto_front.drop('alpha', axis=1, inplace=True)
     pareto_front['model'] = 'Pareto front'
 

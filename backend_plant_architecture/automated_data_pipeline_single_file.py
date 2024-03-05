@@ -22,7 +22,7 @@ def main():
         pf.viz_front(G)
         pf.viz_trees(G)
 
-return True
+# return True
 
  
 if __name__ == '__main__':

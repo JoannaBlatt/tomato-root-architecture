@@ -13,10 +13,10 @@ def main():
     a_arbors.analyze_arbors()
     a_arbors.write_scaling_dists()
     print("auto_pipeline: creating nulls models files using null_models.py")
-    n_m.analyze_null_models()
-    n_m.write_null_models_file()
+    # n_m.analyze_null_models()
+    # n_m.write_null_models_file()
     print("auto_pipeline: creating pareto drawings using pareto_functions.py")
-    for arbor in os.listdir(RECONSTRUCTIONS_DIR):
+    for arbor in os.listdir(RECONSTRUCTIONS_DIR):   #not sure how to grab file without for loop
         print("auto_pipeline: reconstructing arbor:",arbor)
         G = read_arbor_full(arbor)
         pf.viz_front(G)

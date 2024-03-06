@@ -208,7 +208,7 @@ a{
         width: 100%;
     }
 
-    .fileslider {
+    .fileSlider {
         -webkit-appearance: none;
         appearance: none;
         display: block;
@@ -222,7 +222,7 @@ a{
         border-radius: 25px;
       }
 
-    .fileslider::-webkit-slider-thumb {
+    .fileSlider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 25px;
@@ -233,7 +233,7 @@ a{
         cursor: pointer;
     }
 
-    .fileslider::-moz-range-thumb { /*I spent so long wondering why it didn't work...It's because I'm on mozilla ;-; */
+    .fileSlider::-moz-range-thumb { /*I spent so long wondering why it didn't work...It's because I'm on mozilla ;-; */
         width: 25px;
         height: 25px;
         border: none;

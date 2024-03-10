@@ -142,17 +142,13 @@ a{
     font-weight: normal;
 }
 
-.sample-images{
-    height: 300px; /* TO BE FIXED W REAL IMAGES */
-    width: 300px;
-    /*max-height: 100%;
-    max-width: 100%;*/
-}
-
 .graph{
     background-color: var(--white);
-    margin: 10%;
-    padding: 150px;
+}
+
+.samplegraph{
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .upload{

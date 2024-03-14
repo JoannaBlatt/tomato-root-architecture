@@ -33,6 +33,22 @@
         </table>
         <button class = "upload" id="file-upload-button" onclick="handleFileUpload()">Upload File</button>
         <input id="file-upload" type="file" style="display: none;" />
+        <div>
+            <h2>Testing html form version</h2>
+            <!-- <form
+                action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" <!-- This sends it to backend handler-->
+                <!-- action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" -->
+
+                <!-- method="post"
+                enctype="multipart/form-data"
+            >
+                <label for="file" >File</label>
+                <input type="file" name="upload-file">
+                <button class="upload">Submit Testing</button>
+            </form> -->
+            <input id="fileupload" type="file" name="fileupload" /> 
+            <button id="upload-button" onclick="uploadFile()"> Upload </button>
+        </div>
     </div>
     <div class="footer-bar">
         <h1 class = "footer-text">Dev info here</h1>
@@ -54,6 +70,15 @@
 
           window.location.href = "upload.html";
         });
+        async function uploadFile() {
+        let formData = new FormData(); 
+        formData.append("file", fileupload.files[0]);
+        await fetch('upload.php', {
+            method: "POST", 
+            body: formData
+        }); 
+        alert('The file has been uploaded successfully.');
+        }
     </script>
 </body>
 </html>

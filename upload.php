@@ -1,5 +1,5 @@
 <?php
-
+echo "hello";
 /* Get the name of the uploaded file */
 $filename = $_FILES['file']['name'];
 

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Testing File Uploade</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Testing file upload page</h1>
+    <input id="fileContainer" type="file">
+    <input id="show" type="button" value="Show">
+    <div id="imgContainer"></div>
+    <script>
+        $('input#fileContainer').on('change', function () {
+            console.log(this);
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                console.log(reader.result + '->' + typeof reader.result)
+                var thisImage = reader.result;
+                localStorage.setItem("imgData", thisImage);
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+
+
+        $('input#show').click(function () {
+            var dataImage = localStorage.getItem('imgData');
+            console.log(dataImage);
+            var imgCtr = $('<img/>').prop('src', dataImage);
+            $('div#imgContainer').append(imgCtr);
+        });
+    </script>
+</body>
+</html>

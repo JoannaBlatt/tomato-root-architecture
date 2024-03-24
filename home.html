@@ -14,9 +14,11 @@
             <th class="header-text">
                 <h1 class="title">Tomato Root Architecture</h1> <br />
                 <div class="menu">
-                    <a href = "home.html"><h3 class="menu-button cur-page">Home</h3></a>
+                    <a href = "home.html"><h3 class="menu-button cur-page">Tomato Home</h3></a>
                     <a href = "about.html"><h3 class="menu-button">About</h3></a>
                     <a href = "help.html"><h3 class="menu-button">Help</h3></a>
+                    <a href = "."><h3 class="menu-button cur-page">Home</h3></a>
+
             </th>
         </tr></table>
     </div>
@@ -35,19 +37,25 @@
         <input id="file-upload" type="file" style="display: none;" />
         <div>
             <h2>Testing html form version</h2>
-            <!-- <form
-                action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" <!-- This sends it to backend handler-->
+            <form method="post" enctype="multipart/form-data">
+                <!-- <form
+        action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" <!-- This sends it to backend handler-->
                 <!-- action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" -->
-
                 <!-- method="post"
-                enctype="multipart/form-data"
-            >
-                <label for="file" >File</label>
-                <input type="file" name="upload-file">
-                <button class="upload">Submit Testing</button>
-            </form> -->
-            <input id="fileupload" type="file" name="fileupload" /> 
-            <button id="upload-button" onclick="uploadFile()"> Upload </button>
+            enctype="multipart/form-data"
+        >
+            <label for="file" >File</label>
+            <input type="file" name="upload-file">
+            <button class="upload">Submit Testing</button>
+        </form> -->
+                <!--<input id="fileupload" type="file" name="fileupload" />
+        <button id="upload-button" onclick="uploadFile()"> Upload </button>-->
+                <input name="file" type="file">
+                <button type="submit">Upload</button>
+            </form>
+
+            <h1>trying blob stuff</h1>
+            <input type="button" value="Go" onclick="blobajax()">
         </div>
     </div>
     <div class="footer-bar">
@@ -78,8 +86,26 @@
             method: "POST", 
             body: formData
         }); 
-        alert('The file has been uploaded successfully.');
+            alert('The file has been uploaded successfully.');
+            window.location.href = "upload.html";
         }
+
+
+        //found at https://code-boxx.com/create-save-files-javascript/
+        function blobajax() {
+            // (A) CREATE BLOB OBJECT
+            var myBlob = new Blob(["CONTENT"], { type: "text/plain" });
+
+            // (B) FORM DATA
+            var data = new FormData();
+            data.append("upfile", myBlob);
+
+            // (C) AJAX UPLOAD TO SERVER
+            fetch("3b-upload.php", { method: "POST", body: data })
+                .then(res => res.text())
+                .then(txt => console.log(txt));
+        }
+
     </script>
 </body>
 </html>

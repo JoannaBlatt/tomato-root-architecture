@@ -8,11 +8,16 @@
 </head>
 <body>
     <h1>Testing file upload page</h1>
+    <h2>Testing if backend is even accessible</h2>
+    Trying to make directories
+    <script src="/backend_plant_architecture/makeDir.py"></script>
+
+    <h2>Testing file upload using localStorage</h2>
     <input id="fileContainer" type="file">
     <input id="show" type="button" value="Show">
     <div id="imgContainer"></div>
     <script>
-        $('input#fileContainer').on('change', function () {
+$('input#fileContainer').on('change', function () {
             console.log(this);
 
             var reader = new FileReader();
@@ -22,15 +27,15 @@
                 localStorage.setItem("imgData", thisImage);
             };
             reader.readAsDataURL(this.files[0]);
-        });
+});
 
 
-        $('input#show').click(function () {
+$('input#show').click(function () {
             var dataImage = localStorage.getItem('imgData');
             console.log(dataImage);
             var imgCtr = $('<img/>').prop('src', dataImage);
             $('div#imgContainer').append(imgCtr);
-        });
+});
     </script>
 </body>
 </html>

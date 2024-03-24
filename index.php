@@ -1,1 +1,0 @@
-<a href = "home.html"><h3 class="menu-button cur-page">Home</h3></a>

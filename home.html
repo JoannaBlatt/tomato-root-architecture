@@ -35,28 +35,7 @@
         </table>
         <button class = "upload" id="file-upload-button" onclick="handleFileUpload()">Upload File</button>
         <input id="file-upload" type="file" style="display: none;" />
-        <div>
-            <h2>Testing html form version</h2>
-            <!-- <form
-    action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" <!-- This sends it to backend handler-->
-            <!-- action="http://sturdy-tribble-45v494w5rwwhq99x-8080.app.github.dev/home.html" -->
-            <!-- method="post"
-        enctype="multipart/form-data"
-    >
-        <label for="file" >File</label>
-        <input type="file" name="upload-file">
-        <button class="upload">Submit Testing</button>
-    </form> -->
-            <!--<input id="fileupload" type="file" name="fileupload" />
-    <button id="upload-button" onclick="uploadFile()"> Upload </button>-->
-            <form method="post" enctype="multipart/form-data">
-                <input name="file" type="file">
-                <button type="submit">Upload</button>
-            </form>
-
-            <h1>trying blob stuff</h1>
-            <input type="button" value="Go" onclick="blobajax()">
-        </div>
+        
     </div>
     <div class="footer-bar">
         <h1 class = "footer-text">Dev info here</h1>
@@ -90,22 +69,6 @@
         }); 
             alert('The file has been uploaded successfully.');
             window.location.href = "upload.html";
-        }
-
-
-        //found at https://code-boxx.com/create-save-files-javascript/
-        function blobajax() {
-            // (A) CREATE BLOB OBJECT
-            var myBlob = new Blob(["CONTENT"], { type: "text/plain" });
-
-            // (B) FORM DATA
-            var data = new FormData();
-            data.append("upfile", myBlob);
-
-            // (C) AJAX UPLOAD TO SERVER
-            fetch("3b-upload.php", { method: "POST", body: data })
-                .then(res => res.text())
-                .then(txt => console.log(txt));
         }
 
     </script>

@@ -55,6 +55,12 @@ a{
     margin-top: 0px;
 }
 
+.back-arrow{
+    width:10%;
+    padding-bottom: 40px;
+    font-size: 1.2em;
+}
+
 .sprout-image{
     display: block;
     width:40%;

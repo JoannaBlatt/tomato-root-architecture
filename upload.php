@@ -25,6 +25,15 @@ function var_dump_pre($mixed = null) {
 echo var_dump_pre($_REQUEST['formData']);
 echo "<br> testing another var_dump<br>";
 var_dump($_REQUEST);
+
+echo "<br>vardump files<br>";
+var_dump($_FILES);
+echo "<br><br>getting files using name field<br>";
+echo $_FILES["testingfileupload"]["name"];
+echo "<br>testing FILES['testingfileupload']['temp_name'] =";
+echo $_FILES['testingfileupload']["tmp_name"];
+echo "<br>";
+
 echo "<br>get request data test: ";
 echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
@@ -32,12 +41,16 @@ echo "<br>end of vardump code section<br><br>";
 /* Choose where to save the uploaded file */
 $location = "temp/";
 echo "<BR>loacation: ".$location."<br>";
-echo $location;
 echo "<BR>";
 echo "file name: ".$filename."<br>";
-echo $filename;
 echo "<BR>";
 
+echo "<BR>testing code from chelidze dot givia at gmail dot com on php page<BR>";
+$file = $_FILES["testingfileupload"];
+$filePath = 'temp/'.generateDir(10).'/'.$file["name"];
+// Make the directory first or else it will not proceed with the upload.
+mkdir($filePath);
+move_uploaded_file($file["tmp_name"],  $filePath);
 /* Save the uploaded file to the local filesystem */
 /*if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
   echo 'Success'; 
@@ -45,12 +58,12 @@ echo "<BR>";
   echo 'Failure'; 
 }*/
 /*echo $_REQUEST['testingfileupload']*/
-if ( move_uploaded_file($_REQUEST['testingfileupload'], $location) ) { 
+/*if ( move_uploaded_file($_REQUEST['testingfileupload'], $location) ) { 
   echo 'Success'; 
 } else { 
   echo 'Failure'; 
 }
-
+*/
 
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities
@@ -67,6 +80,16 @@ function getRequestData($name){
         }
         return $result;
 }
+
+function generateDir(int $n): string {
+         $characters="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        $dir = "";
+        for($i = 0; $i<$n; $i++){
+            $index = rand(0, strlen($characters)-1);
+            $dir .= $characters[$index];
+        }
+        return $dir;
+    }
 
 ?>
 </body>

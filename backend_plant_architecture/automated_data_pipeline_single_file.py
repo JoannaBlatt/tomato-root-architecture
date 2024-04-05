@@ -20,9 +20,6 @@ def main():
         G = read_arbor_full(arbor)
         pf.viz_front(G)
         pf.viz_trees(G)
-
-# return True
-
  
 if __name__ == '__main__':
     main()

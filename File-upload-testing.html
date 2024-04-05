@@ -9,37 +9,40 @@
 <body>
     <h1>Testing file upload page</h1>
 
+    <h2>Testing if backend is even accessible</h2>
+    Trying to make directories
+    <script src="/tomato/backend/backend_plant_architecture/makeDir.py"></script>
 
     <div>
         <h2>Testing html form version</h2>
-        
+
         <!--<input id="fileupload" type="file" name="fileupload" />
         <button id="upload-button" onclick="uploadFile()"> Upload </button>-->
-        
+
         <h3>Testing using form and no js</h3>
     </div>
-        <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-            <input id="testfileupload" type="file" name="testingfileupload"/>
-            <button id="test-upload-button" name="testing-upload-button">My form test</button>
-        </form>
+    <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
+        <input id="testfileupload" type="file" name="testingfileupload" />
+        <button id="test-upload-button" name="testing-upload-button">My form test</button>
+    </form>
 
     <script>
 
 
 
- //   async function uploadFile() {
- //       console.log("testing uploadFile function");
- //       let formData = new FormData();
- //       formData.append("file", fileupload.files[0]);
- //       console.log(fileupload.files[0]);
- //       console.log(formData)
- //       await fetch('upload.php', {
- //           method: "POST",
- //           body: formData
- //       });
-    //alert('The file has been uploaded successfully.');
- //   window.location.href = "upload.php";
-}
+         //   async function uploadFile() {
+         //       console.log("testing uploadFile function");
+         //       let formData = new FormData();
+         //       formData.append("file", fileupload.files[0]);
+         //       console.log(fileupload.files[0]);
+         //       console.log(formData)
+         //       await fetch('upload.php', {
+         //           method: "POST",
+         //           body: formData
+         //       });
+            //alert('The file has been uploaded successfully.');
+         //   window.location.href = "upload.php";
+//}
 
 
     </script>

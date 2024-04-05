@@ -45,12 +45,13 @@ echo "<BR>";
 echo "file name: ".$filename."<br>";
 echo "<BR>";
 
-echo "<BR>testing code from chelidze dot givia at gmail dot com on php page<BR>";
-$file = $_FILES["testingfileupload"];
-$filePath = 'temp/'.generateDir(10).'/'.$file["name"];
+//echo "<BR>testing code from chelidze dot givia at gmail dot com on php page<BR>";
+//$file = $_FILES["testingfileupload"];
+//$filePath = 'temp/'.generateDir(10).'/'.$file["name"];
 // Make the directory first or else it will not proceed with the upload.
-mkdir($filePath);
-move_uploaded_file($file["tmp_name"],  $filePath);
+//mkdir($filePath);
+//move_uploaded_file($file["tmp_name"],  $filePath);
+
 /* Save the uploaded file to the local filesystem */
 /*if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
   echo 'Success'; 
@@ -58,12 +59,13 @@ move_uploaded_file($file["tmp_name"],  $filePath);
   echo 'Failure'; 
 }*/
 /*echo $_REQUEST['testingfileupload']*/
-/*if ( move_uploaded_file($_REQUEST['testingfileupload'], $location) ) { 
+if ( move_uploaded_file($_FILES['testingfileupload']["tmp_name"], $location) ) { 
   echo 'Success'; 
 } else { 
   echo 'Failure'; 
+  print_r(error_get_last());
 }
-*/
+
 
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities

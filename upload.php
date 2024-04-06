@@ -68,6 +68,8 @@ if ( copy($_FILES['testingfileupload']["tmp_name"], $location) ) {
   print_r(error_get_last());
 }
 
+//Testing a basic script
+$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/testScript.sh');
 
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities

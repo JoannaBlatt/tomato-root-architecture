@@ -39,7 +39,7 @@ echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
 
 /* Choose where to save the uploaded file */
-$location = "temp/";
+$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/temp";
 echo "<BR>loacation: ".$location."<br>";
 echo "<BR>";
 echo "file name: ".$filename."<br>";
@@ -59,7 +59,9 @@ echo "<BR>";
   echo 'Failure'; 
 }*/
 /*echo $_REQUEST['testingfileupload']*/
-if ( move_uploaded_file($_FILES['testingfileupload']["tmp_name"], $location) ) { 
+//if ( move_uploaded_file($_FILES['testingfileupload']["tmp_name"], $location) ) { 
+if ( copy($_FILES['testingfileupload']["tmp_name"], $location) ) { 
+
   echo 'Success'; 
 } else { 
   echo 'Failure'; 

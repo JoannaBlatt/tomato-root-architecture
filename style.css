@@ -62,7 +62,6 @@ a{
 }
 
 .sprout-image{
-    display: block;
     width:20%;
     margin-left: auto;
     padding: 0;
@@ -153,12 +152,17 @@ a{
 }
 
 .graph{
-    background-color: var(--white);
+    justify-content: center;
 }
 
 .samplegraph{
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 80%;
+    max-width: 80%;
+    margin: auto auto;
+}
+
+.sample-images{
+    text-align: center;
 }
 
 .upload{

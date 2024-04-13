@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomato Root Architecture</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <script>
+function deleteUploadedFile() {
+    // Retrieve the file path from the form or other storage
+    var filePath = document.getElementById('file_path').value;
+
+    // Send an AJAX request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'delete_file.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send('file_path=' + encodeURIComponent(filePath));
+}
+            </script>
+    </div>
+    </body>
+</HTML>

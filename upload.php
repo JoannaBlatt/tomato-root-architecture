@@ -113,7 +113,7 @@ echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
 */
 echo "<hr>";
-echo '<br>testing file path setting';
+echo '<br>testing file path setting<br>';
 $file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["testingfileupload"]["name"];
 echo "<script>document.getElementById('file_path').value = '$file_path';</script>";
 
@@ -123,7 +123,6 @@ echo "<script>document.getElementById('file_path').value = '$file_path';</script
 echo "<BR>file_path: ".$file_path."<br>";
 
 echo "<BR>";
-
 if ( copy($_FILES['testingfileupload']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 

@@ -10,39 +10,67 @@
 </head>
 <body>
     <div>
-        <table class="header"><tr>
-            <th class="sprout-image"><img src="Images/Sprout.png"></th>
-            <th class="header-text">
-                <h1 class="title">Tomato Root Architecture</h1> <br />
-                <div class="menu">
-                    <a href = "home.html"><h3 class="menu-button cur-page">Home</h3></a>
-                    <a href = "about.html"><h3 class="menu-button">About</h3></a>
-                    <a href = "help.html"><h3 class="menu-button">Help</h3></a>
-            </th>
-        </tr></table>
-    </div>
-    <div class = "home-body">
-        <table class = "samples">
-            <tr class = "sample-titles">
-                <th class="img-title" id="systemHeader">Original System</th>
-                <th class="img-title">Pareto Front Curve Plot</th>
-            </tr>
-            <tr class = "sample-images">
-                <td class="graph">image</td>
-                <td class="graph">image</td>
-            </tr>
-        </table>
-    </div>
-    <div class="upload-button-container">
-        <input type="range" min="1" max="100" value="50" class="fileSlider" id="file-num">
-        <button class = "upload">Upload Again</button>
-        <button class = "upload" id = "reset">Reset to Original</button>
-    </div>
-    <div class="footer-bar">
-        <h1 class = "footer-text">Dev info here</h1>
-    </div>
+<?php
+//Copied code
+echo "<br>session start<br>";
+session_start();
+$sessPath   = ini_get('session.save_path');
+$sessCookie = ini_get('session.cookie_path');
+$sessName   = ini_get('session.name');
+$sessVar    = 'foo';
+echo '<br>sessPath: ' . $sessPath;
+echo '<br>sessCookie: ' . $sessCookie;
+echo '<br>vardump sid:';
+var_dump(defined('SID'));
+session_start();
+var_dump(defined('SID'));
+echo '<hr>';
+if( !isset( $_GET['p'] ) ){
+    // instantiate new session var
+    $_SESSION[$sessVar] = 'hello world';
+}else{
+    if( $_GET['p'] == 1 ){
+        // printing session value and global cookie PHPSESSID
+        echo $sessVar . ': ';
+        if( isset( $_SESSION[$sessVar] ) ){
+            echo $_SESSION[$sessVar];
+        }else{
+            echo '[not exists]';
+        }
+        echo '<br>' . $sessName . ': ';
+        if( isset( $_COOKIE[$sessName] ) ){
+        echo $_COOKIE[$sessName];
+        }else{
+            if( isset( $_REQUEST[$sessName] ) ){
+            echo $_REQUEST[$sessName];
+            }else{
+                if( isset( $_SERVER['HTTP_COOKIE'] ) ){
+                echo $_SERVER['HTTP_COOKIE'];
+                }else{
+                echo 'problem, check your PHP settings';
+                }
+            }
+        }
+    }else{
+        // destroy session by unset() function
+        unset( $_SESSION[$sessVar] );
+        // check if was destroyed
+        if( !isset( $_SESSION[$sessVar] ) ){
+            echo '<br>';
+            echo $sessName . ' was "unseted"';
+        }else{
+            echo '<br>';
+            echo $sessName . ' was not "unseted"';
+        }
+    }
+}
 
+echo "<br><br>Session id?<br>";
+var_dump($_SESSION);
+echo "<br>session id?";
+var_dump(defined('SID'));
 
+?>
 <?php
 /*
 echo "<br>Code for vardump section begin:<br>";
@@ -71,6 +99,7 @@ echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
 */
 /* Choose where to save the uploaded file */
+/*
 $location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["testingfileupload"]["name"];  #This saves the file with name bk -- this should be changed later
 echo "<BR>loacation: ".$location."<br>";
 echo "<BR>";
@@ -83,7 +112,7 @@ if ( copy($_FILES['testingfileupload']["tmp_name"], $location) ) {
   echo 'Failure'; 
   print_r(error_get_last());
 }
-
+*/
 echo "<BR><BR> testing shell script<BR>";
 
 $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');

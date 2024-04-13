@@ -9,6 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+<div>
+        <table class="header"><tr>
+            <th class="sprout-image"><img src="Images/Sprout.png"></th>
+            <th class="header-text">
+                <h1 class="title">Tomato Root Architecture</h1> <br />
+                <div class="menu">
+                    <a href = "home.html"><h3 class="menu-button cur-page">Tomato Home</h3></a>
+                    <a href = "about.html"><h3 class="menu-button">About</h3></a>
+                    <a href = "help.html"><h3 class="menu-button">Help</h3></a>
+                    <a href = "."><h3 class="menu-button cur-page">Home</h3></a>
+                    <a href = "File-upload-testing.html"><h3 class="menu-button">File-upload-testing</h3></a>
+            </th>
+        </tr></table>
+    </div>
     <div>
 <?php
 //Copied code
@@ -98,21 +112,25 @@ echo "<br>get request data test: ";
 echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
 */
+echo "<hr>";
+echo '<br>testing file path setting';
+$file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["testingfileupload"]["name"];
+echo "<script>document.getElementById('file_path').value = '$file_path';</script>";
+
 /* Choose where to save the uploaded file */
-/*
-$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["testingfileupload"]["name"];  #This saves the file with name bk -- this should be changed later
-echo "<BR>loacation: ".$location."<br>";
+//$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["testingfileupload"]["name"];  #This saves the file with name bk -- this should be changed later
+//echo "<BR>loacation: ".$location."<br>";
+echo "<BR>file_path: ".$file_path."<br>";
+
 echo "<BR>";
 
-
-if ( copy($_FILES['testingfileupload']["tmp_name"], $location) ) { 
-
+if ( copy($_FILES['testingfileupload']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 
   echo 'Failure'; 
   print_r(error_get_last());
 }
-*/
+
 echo "<BR><BR> testing shell script<BR>";
 
 $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');

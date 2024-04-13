@@ -95,11 +95,12 @@ function var_dump_pre($mixed = null) {
   return null;
 }
 */
-/*
-echo var_dump_pre($_REQUEST['formData']);
-echo "<br> testing another var_dump<br>";
+
+//echo var_dump_pre($_REQUEST['formData']);
+echo "<br> testing request var_dump<br>";
 var_dump($_REQUEST);
 
+/*
 echo "<br>vardump files<br>";
 var_dump($_FILES);
 echo "<br><br>getting files using name field<br>";
@@ -115,7 +116,15 @@ echo "<br>end of vardump code section<br><br>";
 echo "<hr>";
 echo '<br>testing file path setting<br>';
 $file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["testingfileupload"]["name"];
-echo "<script>document.getElementById('file_path').value = '$file_path';</script>";
+//echo "<script>document.getElementById('file_path').value = '$file_path';</script>";
+
+echo "<hr><br> testing request var_dump<br>";
+var_dump($_REQUEST);
+echo "<br><br>get file_path: ";
+echo getRequestData("file_path");
+echo "<br>set file path and now it is: ";
+$_REQUEST["file_path"] = $file_path;
+echo $_REQUEST["file_path"];
 
 /* Choose where to save the uploaded file */
 //$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["testingfileupload"]["name"];  #This saves the file with name bk -- this should be changed later

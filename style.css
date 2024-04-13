@@ -56,35 +56,39 @@ a{
 }
 
 .back-arrow{
-    width:10%;
+    width:20%;
     padding-bottom: 40px;
     font-size: 1.2em;
 }
 
 .sprout-image{
     display: block;
-    width:40%;
+    width:20%;
     margin-left: auto;
     padding: 0;
 }
 
+.header-text{
+    width: 20%;
+}
+
+.spacer{
+    width:40%;
+}
+
 .menu{
     display: flex;
-    justify-content: left;
     background-color:var(--white);
+    justify-content: center;
 }
 
 .upload:hover{
     background-color: var(--red-hover);
 }
 
-.header-text{
-    width: 60%;
-}
-
 .title {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .menu-button:hover {
@@ -169,6 +173,12 @@ a{
     border: none;
     font-size: 1.5em;
     cursor: pointer;
+    width: 40%;
+    text-align: center;
+}
+
+.upload input[type="file"] {
+    display: none;
 }
 
 /*ABOUT BODY STYLE*/

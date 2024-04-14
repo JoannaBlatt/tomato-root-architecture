@@ -17,3 +17,8 @@ Pipeline for extepted single arbor reconstruction input using automated pipeline
     - Create the graph of the arbor from the reconstruction file using `read_arbor_full()` from `read_arbor_reconstructions.py`.
     - Use the generated arbor graph to create the Pareto front graph using `viz_front()` in `pareto_functions.py`. (this involves the null model for comparison)
     - Use the generated arbor graph to create the simple tree drawings for the original arbor and the generated optimal arbors using viz_trees() in `pareto_functions.py`.
+  
+Setup for environment:  
+`pip install pipreqs`  
+`pipreqs`  (note: if this does not work can also use `python3 -m  pipreqs.pipreqs`)  
+`pip install -r requirements.txt` (note: if this does not work can also install each in turn based on what is in requirements.txt: `pip install networkx`, `pip install pandas`, `pip install scipy`)

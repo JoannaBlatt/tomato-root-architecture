@@ -183,6 +183,7 @@ a{
 
 .upload input[type="file"] {
     display: none;
+    visibility: hidden;
 }
 
 .big_button {

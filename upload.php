@@ -100,7 +100,7 @@ function var_dump_pre($mixed = null) {
 echo "<br> testing request var_dump<br>";
 var_dump($_REQUEST);
 
-/*
+
 echo "<br>vardump files<br>";
 var_dump($_FILES);
 echo "<br><br>getting files using name field<br>";
@@ -112,7 +112,7 @@ echo "<br>";
 echo "<br>get request data test: ";
 echo getRequestData("testingfileupload");
 echo "<br>end of vardump code section<br><br>";
-*/
+
 echo "<hr>";
 echo '<br>testing file path setting<br>';
 $file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["testingfileupload"]["name"];
@@ -139,9 +139,9 @@ if ( copy($_FILES['testingfileupload']["tmp_name"], $file_path) ) {
   print_r(error_get_last());
 }
 
-echo "<BR><BR> testing shell script<BR>";
+//echo "<BR><BR> testing shell script<BR>";
 
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');
+//$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');
 
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities

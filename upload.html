@@ -35,42 +35,41 @@
                 <td class="graph">image</td>
             </tr>
         </table>
-    </div>
 
-    <table class="samples">
-        <tr>
-            <input type="range" min="1" max="100" value="50" class="fileSlider" id="file-num">
-        </tr>
-        <tr>
-            <td>
-                <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-                    <label for="testfileupload" class="big_button upload">
-                        <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
-                        Upload Again
-                    </label>
-                </form>
-            </td>
-            <td>
-                <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-                    <label for="testfileupload" class="big_button upload">
-                        <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
-                        Reset to Original
-                    </label>
-                </form>
-            </td>
-            <td>
-                <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-                    <label for="testfileupload" class="big_button upload">
-                        <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
-                        Download Data
-                    </label>
-                </form>
-            </td>
-        </tr>
-    </table>
+        <table class="samples">
+            <tr>
+                <input type="range" min="1" max="100" value="50" class="fileSlider" id="file-num">
+            </tr>
+            <tr>
+                <td>
+                    <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
+                        <label for="testfileupload" class="big_button upload">
+                            <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
+                            Upload Again
+                        </label>
+                    </form>
+                </td>
+                <td>
+                    <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
+                        <label for="testfileupload" class="big_button upload">
+                            <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
+                            Reset to Original
+                        </label>
+                    </form>
+                </td>
+                <td>
+                    <form action="upload.php" method="post" enctype="multipart/form-data" name="test">
+                        <label for="testfileupload" class="big_button upload">
+                            <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
+                            Download Data
+                        </label>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div class="footer-bar">
         <h1 class="footer-text">Dev info here</h1>
     </div>
-    <script src="upload.js"></script>
 </body>
 </html>

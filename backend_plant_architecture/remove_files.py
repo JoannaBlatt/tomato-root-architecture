@@ -8,6 +8,7 @@ import shutil
 
 def delete_files_and_subdirectories(directory_path):
    """deletes files and subdirectories in the given directory"""
+   print(directory_path)
    try:
      with os.scandir(directory_path) as entries:
        for entry in entries:
@@ -33,13 +34,20 @@ def remove_files(directory):
 
 def remove_all_files():
     """removes files from all directories in the necessary_dir_list"""
+    """There lines properly remove all subdirectories in the data directory"""
+    #print("testing remove data directory")
+    #delete_files_and_subdirectories("data")
     # print("testing with null models directory")
     # for file in os.listdir(STATISTICS_DIR):
     #     os.remove(STATISTICS_DIR+"/"+file)
     for directory in NECESSARY_DIR_LIST:
         print("directory name where files will be removed:", directory)
         # remove_files(directory)
+        #newDir = "C:\Users\nethe\OneDrive\Documents\GitHub\tomato-root-architecture\backend_plant_architecture".directory
         delete_files_and_subdirectories(directory)
+        #delete_files_and_subdirectories(newDir)
+
+
 
 def main():
     print("remove-files.py will now remove all files.")

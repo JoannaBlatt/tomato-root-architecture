@@ -1,4 +1,4 @@
-#This file with be called to automatically run the data through the data pipeline. It is created to work with a single arbor reconstruction file. The example file used is 065_3_S_day2.csv
+#This file will be called to automatically run the data through the data pipeline. It is created to work with a single arbor reconstruction file. The example file used is 065_3_S_day2.csv
 
 import analyze_arbors as a_arbors
 import null_models as n_m
@@ -20,9 +20,6 @@ def main():
         G = read_arbor_full(arbor)
         pf.viz_front(G)
         pf.viz_trees(G)
-
-# return True
-
  
 if __name__ == '__main__':
     main()

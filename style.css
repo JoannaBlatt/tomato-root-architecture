@@ -185,6 +185,10 @@ a{
     display: none;
 }
 
+.big_button {
+    width: 70%
+}
+
 /*ABOUT BODY STYLE*/
 
     .about-body{

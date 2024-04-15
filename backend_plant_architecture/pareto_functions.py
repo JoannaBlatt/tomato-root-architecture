@@ -340,6 +340,20 @@ def viz_front(G, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
     os.system('mkdir -p %s' % plot_dir) #for some reason my system is saying the syntax of this command is inccorrect
     pylab.savefig('%s/%s-pareto-front.pdf' % (plot_dir, arbor_name))
 
+    #ZEKKIE ADDED CODE TO CREATE HIGHLIGHTED POINTS
+    '''
+    alpha_num = 0
+    for x, y in scatter_df:
+        pylab.figure()
+        sns.scatterplot(x='wiring cost', y='conduction delay', hue='model', data=scatter_df)
+        sns.scatterplot(x=[x], y=[y], s=100, color='red', data=scatter_df) #HIGHLIGHT LINE
+        plot_dir = '%s/%s' % (outdir, arbor_name)
+        #print('mkdir -p %s' % plot_dir)
+        os.system('mkdir -p %s' % plot_dir) #for some reason my system is saying the syntax of this command is inccorrect
+        pylab.savefig('%s/%s-pareto-front-alpha=%s.pdf' % (plot_dir, arbor_name, alphas[alpha_num]))
+        alpha_num+=1
+    '''
+
 
 def main():
     # G = read_arbor_full('091_4_S_day5.csv')

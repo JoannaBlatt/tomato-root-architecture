@@ -32,3 +32,8 @@ SCORING_DATA_DIR = '%s/scoring-data' % DATA_DIR
 
 #list of all needed directories for processing a single arbor reconstruction file
 NECESSARY_DIR_LIST = [RECONSTRUCTIONS_DIR, PARETO_FRONTS_DIR, STATISTICS_DIR, NULL_MODELS_DIR, FRONT_DRAWINGS_DIR]
+
+#directory setup
+#sessID-dir
+#-datadir
+#architecture dir

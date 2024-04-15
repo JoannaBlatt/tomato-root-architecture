@@ -1,3 +1,12 @@
+""" pareto_functions.py file
+This file contains a number of functions listed below:
+
+
+The main function uses a hard coded file
+
+
+"""
+
 from math import sqrt
 from utils import *
 import networkx as nx

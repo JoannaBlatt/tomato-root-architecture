@@ -139,6 +139,8 @@ if ( copy($_FILES['testingfileupload']["tmp_name"], $file_path) ) {
   print_r(error_get_last());
 }
 
+
+
 //echo "<BR><BR> testing shell script<BR>";
 
 //$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');
@@ -170,6 +172,20 @@ function generateDir(int $n): string {
     }
 
 ?>
+
+<script>
+        function getImage(systemPath, paretoPath) {
+            var systemDisplay = document.getElementById('systemDisplay');
+            systemDisplay.src = systemPath;
+            systemDisplay.class = "samplegraph";
+
+            var paretoDisplay = document.getElementById('paretoDisplay');
+            paretoDisplay.src = paretoPath;
+            paretoDisplay.class = "samplegraph";
+        }
+
+        getImage("Images/sample.jpeg", "Images/sample.jpeg");
+ </script>
 
 </body>
 </html>

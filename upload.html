@@ -37,7 +37,7 @@
 
     <table class="samples">
         <tr>
-            <input type="range" min="1" max="100" value="50" class="fileSlider" id="file-num">
+             
         </tr>
         <tr>
             <td><form action="upload.php" method="post" enctype="multipart/form-data" name="test">
@@ -65,6 +65,8 @@
         <h1 class="footer-text">Dev info here</h1>
     </div>
     <script>
+        var phpFile = JSON.parse('<?php echo $jsonData; ?>');
+        var baseFile = data.myVar;
         function getImage(systemPath, paretoPath) {
             var systemDisplay = document.getElementById('systemDisplay');
             systemDisplay.src = systemPath;

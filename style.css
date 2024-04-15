@@ -184,6 +184,7 @@ a{
 .upload input[type="file"] {
     display: none;
     visibility: hidden;
+    width: 0px;
 }
 
 .big_button {

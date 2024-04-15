@@ -29,8 +29,8 @@
                 <th class="img-title">Pareto Front Curve Plot</th>
             </tr>
             <tr class="sample-images">
-                <td class="graph">image</td>
-                <td class="graph">image</td>
+                <td class="graph"><img id="systemDisplay"></td>
+                <td class="graph"><img id="paretoDisplay"></td>
             </tr>
         </table>
 
@@ -64,5 +64,14 @@
     <div class="footer-bar">
         <h1 class="footer-text">Dev info here</h1>
     </div>
+    <script>
+        function getImage() {
+            var systemDisplay = document.getElementById('systemDisplay');
+            systemDisplay.src = "Images/sample.jpeg";
+            systemDisplay.class = "samplegraph";
+        }
+
+        getImage();
+    </script>
 </body>
 </html>

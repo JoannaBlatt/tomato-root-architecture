@@ -65,13 +65,17 @@
         <h1 class="footer-text">Dev info here</h1>
     </div>
     <script>
-        function getImage() {
+        function getImage(systemPath, paretoPath) {
             var systemDisplay = document.getElementById('systemDisplay');
-            systemDisplay.src = "Images/sample.jpeg";
+            systemDisplay.src = systemPath;
             systemDisplay.class = "samplegraph";
+
+            var paretoDisplay = document.getElementById('paretoDisplay');
+            paretoDisplay.src = paretoPath;
+            paretoDisplay.class = "samplegraph";
         }
 
-        getImage();
+        getImage("Images/sample.jpeg", "Images/sample.jpeg");
     </script>
 </body>
 </html>

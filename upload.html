@@ -29,8 +29,8 @@
                 <th class="img-title">Pareto Front Curve Plot</th>
             </tr>
             <tr class="sample-images">
-                <td class="graph"><img id="systemDisplay"></td>
-                <td class="graph"><img id="paretoDisplay"></td>
+                <td class="graph"><img id="systemDisplay" class="samplegraph"></td>
+                <td class="graph"><img id="paretoDisplay" class="samplegraph"></td>
             </tr>
         </table>
 
@@ -52,12 +52,7 @@
                     Reset to Original
                 </label>
             </form></td>
-            <td><form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-                <label for="testfileupload" class="big_button upload">
-                    <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
-                    Download Data
-                </label>
-            </form></td>
+            <td><button class = "big_button upload" onclick="varPassing()">Download Data</button></td>
         </tr>
     </table>
     </div>
@@ -77,7 +72,12 @@
             paretoDisplay.class = "samplegraph";
         }
 
-        getImage("Images/sample.jpeg", "Images/sample.jpeg");
+        getImage("Images/sample-root.jpg", "Images/sample-pareto.jpg");
+        
+        function varPassing(){
+            const myVariable = "Hello, PHP!";
+            window.location.href = 'test_passing_var.php?myData=' + encodeURIComponent(myVariable);
+        }
     </script>
 </body>
 </html>

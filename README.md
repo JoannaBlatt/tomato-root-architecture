@@ -16,27 +16,40 @@ redirect to the upload.php page
   - passes the file
   - passes the variable for file-path
 
-On upload.php:
-creates a sessionId variable
-passes sessionId variable and file to shell script
+On upload.php:  
+creates a sessionId variable  
+passes sessionId variable to shell script  
 
-Shell script:
-starts python virtualenv
-passes session id to makeDir.py
+Shell script:  
+starts python virtualenv  
+passes session id to makeDir.py  
 
-makeDir.py:
-creates the base directory using passed sessionID
-creates the subdirectories needed using the ones listed in constantDirectories.py
+makeDir.py:  
+creates the base directory using passed sessionID  
+creates the subdirectories needed using the ones listed in constantDirectories.py  
 
-Shell script:
-saves file to appropriate subdirectory
-passes sessionId and filepath to automated_pipeline
+upload.php:  
+saves file to appropriate subdirectory  
+passes sessionid/file-path to shell script
 
-Automated_pipeline:
-processes the files by passing the sessionId/path to appropriate functions
-(will need to modify functions to make use of this)
+shell script:  
+passes sessionId and filepath to automated_pipeline  
 
-upload.php
-Shows images that were produced using the slider
-  (since upload.php already knows the sessionId and paths, this should be passed to js in upload.php)
-has extra buttons
+Automated_pipeline:  
+processes the files by passing the sessionId/path to appropriate functions  
+(will need to modify functions to make use of this)  
+
+upload.php  
+Shows images that were produced using the slider  
+  (since upload.php already knows the sessionId and paths, this should be passed to js in upload.php)  
+has extra buttons  
+
+upload.php:  
+delete files when user leaves page  
+delete files after 30 minutes  
+
+upload.php javascript:  
+must grab images to display with slider
+alert when user has left the page
+
+session timer? Not sure where this should go or be implemented. I think it should probably be server side though.

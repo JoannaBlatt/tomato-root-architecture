@@ -63,9 +63,10 @@ echo "<br><hr><br>";
 
 echo "<br>section 2: pass sessID to makeDir and make directories";
 
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/testScript.sh');
+echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$sessID;
+$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$sessID);
 
-
+echo '<br><br><br>';
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities
  * (to avoid cross scripting attacks) and trims white space

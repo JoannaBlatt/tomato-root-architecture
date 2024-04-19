@@ -52,7 +52,7 @@
                     Reset to Original
                 </label>
             </form></td>
-            <td><button class = "big_button upload" onclick="varPassing()">Download Data</button></td>
+            <td><button class = "big_button upload" onclick="varPassing()" id="downloadButton">Download Data</button></td>
         </tr>
     </table>
     </div>
@@ -77,6 +77,12 @@
         function varPassing(){
             const myVariable = "Hello, PHP!";
             window.location.href = 'test_passing_var.php?myData=' + encodeURIComponent(myVariable);
+        }
+
+        function passBack(text){
+            window.location.replace("upload.html")
+            var butt = document.getElementById('downloadButton');
+            butt.textContent = text;
         }
     </script>
 </body>

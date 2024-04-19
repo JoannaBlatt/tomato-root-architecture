@@ -1,12 +1,10 @@
-import numpy as np
-import sys
-import pathlib
 
-global STATISTICS_DIR
-global RECONSTRUCTIONS_DIR
-global PARETO_FRONTS_DIR 
-global NULL_MODELS_DIR
-global FRONT_DRAWINGS_DIR
+
+STATISTICS_DIR = '/statistics'
+RECONSTRUCTIONS_DIR = '/arbor-reconstructions'
+PARETO_FRONTS_DIR = '/pareto-fronts'
+NULL_MODELS_DIR = '/null-models'
+FRONT_DRAWINGS_DIR = '/pareto-front-drawings'
 
 #DATA_DIR = 'data'
 #ARCHITECTURE_DIR = '%s/architecture-data' % DATA_DIR
@@ -59,33 +57,28 @@ global FRONT_DRAWINGS_DIR
 ##sessionIDdirectory: 
 
 
-def main():
-    #print ('argument list', sys.argv)
-    #name = sys.argv[1]
-    #print ("Hello {}. How are you?".format(name))
-    sessionID = sys.argv[1]
-    global STATISTICS_DIR
-    STATISTICS_DIR = '%s/statistics' % sessionID
-    global RECONSTRUCTIONS_DIR
-    RECONSTRUCTIONS_DIR = '%s/arbor-reconstructions' % sessionID
-    global PARETO_FRONTS_DIR 
-    PARETO_FRONTS_DIR = '%s/pareto-fronts' % sessionID
-    global NULL_MODELS_DIR
-    NULL_MODELS_DIR = '%s/null-models' % sessionID
-    global FRONT_DRAWINGS_DIR
-    FRONT_DRAWINGS_DIR = '%s/pareto-front-drawings' % sessionID
+#def main():
+#    #print ('argument list', sys.argv)
+#    #name = sys.argv[1]
+#    #print ("Hello {}. How are you?".format(name))
+#    sessionID = sys.argv[1]
+#    STATISTICS_DIR = '%s/statistics' % sessionID
+#    RECONSTRUCTIONS_DIR = '%s/arbor-reconstructions' % sessionID
+#    PARETO_FRONTS_DIR = '%s/pareto-fronts' % sessionID
+#    NULL_MODELS_DIR = '%s/null-models' % sessionID
+#    FRONT_DRAWINGS_DIR = '%s/pareto-front-drawings' % sessionID
 
-    pathlib.Path(RECONSTRUCTIONS_DIR).mkdir(parents=True, exist_ok=True) 
-    #pathlib.Path(METADATA_DIR).mkdir(parents=True, exist_ok=True) 
-    pathlib.Path(PARETO_FRONTS_DIR).mkdir(parents=True, exist_ok=True) 
-    pathlib.Path(STATISTICS_DIR).mkdir(parents=True, exist_ok=True) 
-    pathlib.Path(NULL_MODELS_DIR).mkdir(parents=True, exist_ok=True) 
-    #pathlib.Path(NULL_MODELS_PLOTS_DIR).mkdir(parents=True, exist_ok=True) 
-    #pathlib.Path(LOCATION_ANALYSIS_PLOTS_DIR).mkdir(parents=True, exist_ok=True) 
-    #pathlib.Path(ARBOR_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
-    #pathlib.Path(TOY_NETWORK_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
-    pathlib.Path(FRONT_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
+#    pathlib.Path(RECONSTRUCTIONS_DIR).mkdir(parents=True, exist_ok=True) 
+#    #pathlib.Path(METADATA_DIR).mkdir(parents=True, exist_ok=True) 
+#    pathlib.Path(PARETO_FRONTS_DIR).mkdir(parents=True, exist_ok=True) 
+#    pathlib.Path(STATISTICS_DIR).mkdir(parents=True, exist_ok=True) 
+#    pathlib.Path(NULL_MODELS_DIR).mkdir(parents=True, exist_ok=True) 
+#    #pathlib.Path(NULL_MODELS_PLOTS_DIR).mkdir(parents=True, exist_ok=True) 
+#    #pathlib.Path(LOCATION_ANALYSIS_PLOTS_DIR).mkdir(parents=True, exist_ok=True) 
+#    #pathlib.Path(ARBOR_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
+#    #pathlib.Path(TOY_NETWORK_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
+#    pathlib.Path(FRONT_DRAWINGS_DIR).mkdir(parents=True, exist_ok=True) 
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
 

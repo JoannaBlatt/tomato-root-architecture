@@ -14,7 +14,7 @@
             <th class = "back-arrow"><a href="https://www.arjun-chandrasekhar-teaching.com"><h3 class="menu-button back-arrow">Exit</h3></a></th>
             <th class="sprout-image"><img src="Images/Sprout.png"></th>
             <th class="header-text">
-                <h1 class="title">Tomato Root Architecture</h1> <br />
+                <h1 class="title">Tomato Root Architecture: home.php</h1> <br />
                 <div class="menu">
                     <a href = "home.html"><h3 class="menu-button cur-page">Home</h3></a>
                     <a href = "about.html"><h3 class="menu-button">About</h3></a>
@@ -36,14 +36,14 @@
             </tr>
             <tr>
 
-                <td><form action="upload.php" method="post" enctype="multipart/form-data" name="test">
-                    <label for="testfileupload" class="upload">
-                        <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
+                <td><form action="upload.php" method="post" enctype="multipart/form-data" name="userFileUpload">
+                    <label for="userFileUploadInput" class="upload">
+                        <input id="userFileUploadInput" type="file" name="userFileUploadInput" onchange="this.form.submit();" />
                         Upload File
                     </label>
                 </form></td>
                 <td><form action="upload.html">
-                    <button class ="upload">Use Sample File</button>
+                    <button class ="upload" name="sampleButton">Use Sample File</button>
                 </form></td>
 
             </tr>

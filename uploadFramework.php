@@ -44,27 +44,67 @@ var_dump($_GET);
 var_dump($_POST);
 echo "<br>end of vardump code section<br><br>";
 
-echo "<hr>";
-echo '<br>testing file path setting<br>';
-$file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["userFileUploadInput"]["name"];
-
 echo "<br><br>getRequestData file_path: ";
 echo getRequestData("file_path");
 echo "<br>set file path and now it is: ";
 $_REQUEST["file_path"] = $file_path;
 echo $_REQUEST["file_path"];
+/*
 
+On upload.php:  
+creates a sessionId variable  
+passes sessionId variable to shell script  
+
+Shell script:  
+starts python virtualenv  
+passes session id to makeDir.py  
+
+makeDir.py:  
+creates the base directory using passed sessionID  
+creates the subdirectories needed using the ones listed in constantDirectories.py  
+
+upload.php:  
+saves file to appropriate subdirectory  
+passes sessionid/file-path to shell script
+
+shell script:  
+passes sessionId and filepath to automated_pipeline  
+
+Automated_pipeline:  
+processes the files by passing the sessionId/path to appropriate functions  
+(will need to modify functions to make use of this)  
+
+upload.php  
+Shows images that were produced using the slider  
+  (since upload.php already knows the sessionId and paths, this should be passed to js in upload.php)  
+has extra buttons  
+
+upload.php:  
+delete files when user leaves page  
+delete files after 30 minutes  
+
+upload.php javascript:  
+must grab images to display with slider
+alert when user has left the page
+
+session timer? Not sure where this should go or be implemented. I think it should probably be server side though.
+*/
+# section 1 : Create SessionID variable
 echo "<br><hr><br>section 1: create sessionID variable<BR>";
 $sessID = uniqid();
 echo "id created is: ".$sessID;
-$filename = $_FILES["userFileUploadInput"]["name"];
 
+# section 2: Create file path using the sessionID and filename
+$filename = $_FILES["userFileUploadInput"]["name"];
+$pathPrefix = $sessID."_file_".$filename;
+echo "<br>Path prefix: ".$pathPrefix;
 echo "<br><hr><br>";
 
-echo "<br>section 2: pass sessID to makeDir and make directories";
+# section 3: Pass path prefix to makeDirectories.sh which passes to makeDir.py which makes the directories needed
+echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
-echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$sessID;
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$sessID);
+echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
+$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
 
 echo '<br><br><br>';
 /** Function: getRequestData()

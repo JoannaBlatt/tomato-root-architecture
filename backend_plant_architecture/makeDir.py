@@ -3,15 +3,14 @@ import sys
 
 def main():
     #print ('argument list', sys.argv)
-    #name = sys.argv[1]
-    #print ("Hello {}. How are you?".format(name))
-    sessionID = sys.argv[1]
+    initialPath = sys.argv[1]
+    mainDirectory = initialPath.strip('.csv')
     
-    STATISTICS_DIR = '%s/statistics' % sessionID
-    RECONSTRUCTIONS_DIR = '%s/arbor-reconstructions' % sessionID
-    PARETO_FRONTS_DIR = '%s/pareto-fronts' % sessionID
-    NULL_MODELS_DIR = '%s/null-models' % sessionID
-    FRONT_DRAWINGS_DIR = '%s/pareto-front-drawings' % sessionID
+    STATISTICS_DIR = '%s/statistics' % mainDirectory
+    RECONSTRUCTIONS_DIR = '%s/arbor-reconstructions' % mainDirectory
+    PARETO_FRONTS_DIR = '%s/pareto-fronts' % mainDirectory
+    NULL_MODELS_DIR = '%s/null-models' % mainDirectory
+    FRONT_DRAWINGS_DIR = '%s/pareto-front-drawings' % mainDirectory
 
     pathlib.Path(RECONSTRUCTIONS_DIR).mkdir(parents=True, exist_ok=True) 
     pathlib.Path(PARETO_FRONTS_DIR).mkdir(parents=True, exist_ok=True) 

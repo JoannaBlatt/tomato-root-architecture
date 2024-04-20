@@ -39,29 +39,16 @@ echo "<br>";
 echo "<br>get request data test: ";
 echo getRequestData("userFileUploadInput");
 
-echo "<br>var_dump get then post:";
+echo "<br>var_dump get then post:<br>";
 var_dump($_GET);
+echo "<br>";
 var_dump($_POST);
 echo "<br>end of vardump code section<br><br>";
 
-echo "<br><br>getRequestData file_path: ";
-echo getRequestData("file_path");
-echo "<br>set file path and now it is: ";
-$_REQUEST["file_path"] = $file_path;
-echo $_REQUEST["file_path"];
+
 /*
+ 
 
-On upload.php:  
-creates a sessionId variable  
-passes sessionId variable to shell script  
-
-Shell script:  
-starts python virtualenv  
-passes session id to makeDir.py  
-
-makeDir.py:  
-creates the base directory using passed sessionID  
-creates the subdirectories needed using the ones listed in constantDirectories.py  
 
 upload.php:  
 saves file to appropriate subdirectory  
@@ -96,6 +83,7 @@ echo "id created is: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
 $filename = $_FILES["userFileUploadInput"]["name"];
+$trimmedFileName = rtrim($filename, '.csv')
 $pathPrefix = $sessID."_file_".$filename;
 echo "<br>Path prefix: ".$pathPrefix;
 echo "<br><hr><br>";
@@ -105,6 +93,21 @@ echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
 echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
 $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
+
+#section 4: save file to appropriate directory
+echo "<br><br>getRequestData file_path: ";
+echo getRequestData("file_path");
+echo "<br>set file path and now it is: ";
+$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
+$_REQUEST["file_path"] = $file_path;
+echo $_REQUEST["file_path"];
+if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) { 
+  echo 'Success'; 
+} else { 
+  echo 'Failure'; 
+  print_r(error_get_last());
+}
+
 
 echo '<br><br><br>';
 /** Function: getRequestData()

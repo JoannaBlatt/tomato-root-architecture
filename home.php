@@ -14,7 +14,7 @@
             <th class = "back-arrow"><a href="https://www.arjun-chandrasekhar-teaching.com"><h3 class="menu-button back-arrow">Exit</h3></a></th>
             <th class="sprout-image"><img src="Images/Sprout.png"></th>
             <th class="header-text">
-                <h1 class="title">Tomato Root Architecture: home.php</h1> <br />
+                <h1 class="title">Tomato Root Architecture</h1> <br />
                 <div class="menu">
                     <a href = "home.html"><h3 class="menu-button cur-page">Home</h3></a>
                     <a href = "about.html"><h3 class="menu-button">About</h3></a>
@@ -42,8 +42,8 @@
                         Upload File
                     </label>
                 </form></td>
-                <td><form action="upload.html">
-                    <button class ="upload" name="sampleButton">Use Sample File</button>
+                <td><form action="sample-upload.php" method="post">
+                   <input class="upload" type="submit" value="Use Sample File" />
                 </form></td>
 
             </tr>

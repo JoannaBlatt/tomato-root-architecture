@@ -13,7 +13,7 @@ import networkx as nx
 from scipy.spatial.distance import euclidean
 import numpy as np
 from read_arbor_reconstruction import read_arbor_full
-from constants import *
+from new_constants import *
 from optimal_midpoint import optimal_midpoint, optimal_midpoint_approx, optimal_midpoint_alpha1
 from collections import defaultdict
 import seaborn as sns
@@ -310,12 +310,12 @@ def arbor_dist_loc_scale(G, alphas, wiring_costs, conduction_delays):
 
     return closest_dist, closest_alpha
 
-def viz_trees(G, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
+def viz_trees(G, pathPrefix, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
     for alpha in alphas:
         opt = opt_arbor(G, alpha)
-        draw_arbor(opt, outdir='%s/%s' % (outdir, G.graph['arbor name']))
+        draw_arbor(opt, outdir='%s/%s' % ((pathPrefix + outdir), G.graph['arbor name']))
 
-def viz_front(G, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
+def viz_front(G,pathPrefix, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
     '''
     wiring_costs, conduction_delays = pareto_front(G, alphas=alphas)
 
@@ -334,17 +334,17 @@ def viz_front(G, alphas=DEFAULT_ALPHAS, outdir=FRONT_DRAWINGS_DIR):
     pylab.close()
     '''
     arbor_name = G.graph['arbor name']
-    pareto_front = pd.read_csv('%s/%s.csv' % (PARETO_FRONTS_DIR, arbor_name), skipinitialspace=True)
+    pareto_front = pd.read_csv('%s/%s.csv' % ((pathPrefix + PARETO_FRONTS_DIR), arbor_name), skipinitialspace=True)
     pareto_front.drop('alpha', axis=1, inplace=True)
     pareto_front['model'] = 'Pareto front'
 
-    tree_costs = pd.read_csv('%s/%s.csv' % (NULL_MODELS_DIR, arbor_name), skipinitialspace=True)
+    tree_costs = pd.read_csv('%s/%s.csv' % ((pathPrefix + NULL_MODELS_DIR), arbor_name), skipinitialspace=True)
 
     scatter_df = tree_costs._append(pareto_front)
     scatter_df = scatter_df[scatter_df['model'] != 'random']
     pylab.figure()
     sns.scatterplot(x='wiring cost', y='conduction delay', hue='model', data=scatter_df)
-    plot_dir = '%s/%s' % (outdir, arbor_name)
+    plot_dir = '%s/%s' % ((pathPrefix + outdir), arbor_name)
     #print('mkdir -p %s' % plot_dir)
     os.system('mkdir -p %s' % plot_dir) #for some reason my system is saying the syntax of this command is inccorrect
     pylab.savefig('%s/%s-pareto-front.pdf' % (plot_dir, arbor_name))

@@ -18,7 +18,7 @@ to run `analyze_arbors()` and `--scaling` to run `write_scaling_dists()`.
 
 """
 
-from constants import *
+from new_constants import *
 from read_arbor_reconstruction import read_arbor_full
 import pareto_functions as pf
 import numpy as np
@@ -33,7 +33,7 @@ def write_front(G, outdir, alphas, wiring_costs, conduction_delays):
         for alpha, wiring, delay in zip(alphas, wiring_costs, conduction_delays):
             f.write('%f, %f, %f\n' % (alpha, wiring, delay))
 
-def get_pareto_front(G, alphas):
+def get_pareto_front(G, alphas, pathPrefix):
     """Gets the wiring costs and condution delays for the Pareto front.
     If the file already exists it just reads the file. If it does not,
     it will use `pareto_front()` from `pareto_functions.py` to calculate
@@ -53,7 +53,7 @@ def get_pareto_front(G, alphas):
     list
         a list of wiring costs and conduction delays
     """
-    outdir = PARETO_FRONTS_DIR
+    outdir = pathPrefix + PARETO_FRONTS_DIR
     fname = '%s/%s.csv' % (outdir, G.graph['arbor name'])
     if os.path.exists(fname):
         df = pd.read_csv(fname, skipinitialspace=True)
@@ -63,9 +63,9 @@ def get_pareto_front(G, alphas):
         write_front(G, outdir, alphas, wiring_costs, conduction_delays)
         return wiring_costs, conduction_delays
 
-def analyze_arbors():
+def analyze_arbors(pathPrefix):
     alphas = DEFAULT_ALPHAS
-    fname = '%s/arbor_stats.csv' % STATISTICS_DIR
+    fname = '%s/arbor_stats.csv' % (pathPrefix + STATISTICS_DIR)
     first_time = not os.path.exists(fname)
 
     prev_arbors = []
@@ -77,7 +77,7 @@ def analyze_arbors():
         if first_time:
             f.write('arbor name, pareto front distance, pareto front location\n')
 
-        for arbor_fname in os.listdir(RECONSTRUCTIONS_DIR):
+        for arbor_fname in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):
             if not arbor_fname.endswith('.csv'):
                 continue
             if arbor_fname.strip('.csv') in prev_arbors:
@@ -86,17 +86,17 @@ def analyze_arbors():
             print("analyzing arbors from analyze_arbors.py")
             print(arbor_fname)
 
-            G = read_arbor_full(arbor_fname)
+            G = read_arbor_full(arbor_fname, pathPrefix)
             arbor_name = G.graph['arbor name']
 
-            wiring_costs, conduction_delays = get_pareto_front(G, alphas)
+            wiring_costs, conduction_delays = get_pareto_front(G, alphas, pathPrefix)
 
             dist, alpha = pf.arbor_dist_loc(G, alphas, wiring_costs, conduction_delays)
             f.write('%s, %f, %f\n' % (arbor_name, dist, alpha))
 
-def write_scaling_dists():
+def write_scaling_dists(pathPrefix):
     alphas = DEFAULT_ALPHAS
-    fname = '%s/scaling_distances.csv' % STATISTICS_DIR
+    fname = '%s/scaling_distances.csv' % (pathPrefix + STATISTICS_DIR)
     first_time = not os.path.exists(fname)
 
     prev_arbors = []
@@ -108,7 +108,7 @@ def write_scaling_dists():
         if first_time:
             f.write('arbor name, pareto front scaling distance, pareto front scaling location\n')
 
-        for arbor_fname in os.listdir(RECONSTRUCTIONS_DIR):
+        for arbor_fname in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):
             if not arbor_fname.endswith('.csv'):
                 continue
 
@@ -118,10 +118,10 @@ def write_scaling_dists():
             print("writing scaling distances from analyze_arbors.py")
             print(arbor_fname)
 
-            G = read_arbor_full(arbor_fname)
+            G = read_arbor_full(arbor_fname, pathPrefix)
             arbor_name = G.graph['arbor name']
 
-            wiring_costs, conduction_delays = get_pareto_front(G, alphas)
+            wiring_costs, conduction_delays = get_pareto_front(G, alphas, pathPrefix)
 
             dist, alpha = pf.arbor_dist_loc_scale(G, alphas, wiring_costs, conduction_delays)
             f.write('%s, %f, %f\n' % (arbor_name, dist, alpha))

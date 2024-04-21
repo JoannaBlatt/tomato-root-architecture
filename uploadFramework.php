@@ -110,10 +110,12 @@ if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
   print_r(error_get_last());
 }
 
-echo '<br><br><br>';
+echo '<br><hr><br>';
 
 # section 4: call shell script to process data and pass the sessionId and filename.
-# this should use path prefix and maybe file name.
+# this should use path prefix and maybe file name. $pathPrefix
+echo "Section 4: run automated pipeline<br>";
+shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix);
 
 echo '<br><br><br>';
 /** Function: getRequestData()

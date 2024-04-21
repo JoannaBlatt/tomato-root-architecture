@@ -82,9 +82,10 @@ $sessID = uniqid();
 echo "id created is: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
+echo "<br><hr><br>section 2: create file path for saving the file<br>";
 $filename = $_FILES["userFileUploadInput"]["name"];
-$trimmedFileName = rtrim($filename, '.csv')
-$pathPrefix = $sessID."_file_".$filename;
+$trimmedFileName = rtrim($filename, '.csv');
+$pathPrefix = $sessID."_file_".$trimmedFileName;
 echo "<br>Path prefix: ".$pathPrefix;
 echo "<br><hr><br>";
 
@@ -95,12 +96,13 @@ echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectorie
 $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
 
 #section 4: save file to appropriate directory
-echo "<br><br>getRequestData file_path: ";
+echo "<hr><br>section 4: save file to appropriate directory<br>getRequestData file_path: ";
 echo getRequestData("file_path");
 echo "<br>set file path and now it is: ";
-$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
+$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;
 $_REQUEST["file_path"] = $file_path;
 echo $_REQUEST["file_path"];
+echo "<br>";
 if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 
@@ -108,6 +110,10 @@ if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
   print_r(error_get_last());
 }
 
+echo '<br><br><br>';
+
+# section 4: call shell script to process data and pass the sessionId and filename.
+# this should use path prefix and maybe file name.
 
 echo '<br><br><br>';
 /** Function: getRequestData()

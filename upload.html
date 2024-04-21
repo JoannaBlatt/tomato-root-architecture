@@ -13,7 +13,7 @@
             <th class = "back-arrow"><a href="https://www.arjun-chandrasekhar-teaching.com"><h3 class="menu-button back-arrow">Exit</h3></a></th>
             <th class="sprout-image"><img src="Images/Sprout.png"></th>
             <th class="header-text">
-                <h1 class="title">Tomato Root Architecture</h1> <br />
+                <h1 class="title">Tomato Root Architecture: upload.html</h1> <br />
                 <div class="menu">
                     <a href = "home.html"><h3 class="menu-button">Home</h3></a>
                     <a href = "about.html"><h3 class="menu-button">About</h3></a>
@@ -37,10 +37,10 @@
 
     <table class="samples">
         <tr>
-            <input type="range" min="1" max="100" value="50" class="fileSlider" id="file-num">
+             
         </tr>
         <tr>
-            <td><form action="upload.php" method="post" enctype="multipart/form-data" name="test">
+            <td><form action="upload.php" method="post" enctype="multipart/form-data" name="userUpload">
                 <label for="testfileupload" class="big_button upload">
                     <input id="testfileupload" type="file" name="testingfileupload" onchange="this.form.submit();" />
                     Upload Again
@@ -60,6 +60,8 @@
         <h1 class="footer-text">Dev info here</h1>
     </div>
     <script>
+        var phpFile = JSON.parse('<?php echo $jsonData; ?>');
+        var baseFile = data.myVar;
         function getImage(systemPath, paretoPath) {
             var systemDisplay = document.getElementById('systemDisplay');
             systemDisplay.src = systemPath;

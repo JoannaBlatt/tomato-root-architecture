@@ -1,7 +1,8 @@
 import networkx as nx
 from scipy.spatial.distance import euclidean
 from utils import *
-from constants import RECONSTRUCTIONS_DIR, DRAWINGS_DIR
+#from constants import RECONSTRUCTIONS_DIR, DRAWINGS_DIR
+from new_constants import *
 import os
 import pandas as pd
 from sys import argv
@@ -73,7 +74,7 @@ def connect_lateral_roots(G, root_points, lateral_starts):
         G.add_edge(closest_point, lateral_start)
         G[closest_point][lateral_start]['length'] = closest_dist
 
-def read_arbor_full(fname):
+def read_arbor_full(fname, pathPrefix):
     '''
     Read the arbor reconstruction corresponding to a full arbor tracing. First, this
     method individually reconstructs the main root and lateral roots separately. Afterwards,
@@ -90,7 +91,7 @@ def read_arbor_full(fname):
     root_points = []
     lateral_starts = []
 
-    with open('%s/%s' % (RECONSTRUCTIONS_DIR, fname)) as f:
+    with open('%s/%s' % ((pathPrefix + RECONSTRUCTIONS_DIR), fname)) as f:
         for line in f:
             line = line.strip('\n')
             line = line.split(',')
@@ -139,8 +140,8 @@ def read_arbor_full(fname):
 
     return G
 
-def read_arbor_condensed(fname):
-    df = pd.read_csv('%s/%s' % (RECONSTRUCTIONS_DIR, fname), skipinitialspace=True)
+def read_arbor_condensed(fname, pathPrefix):
+    df = pd.read_csv('%s/%s' % ((pathPrefix + RECONSTRUCTIONS_DIR), fname), skipinitialspace=True)
     root_order = df['root order']
     x_coord = df['x coordinate']
     y_coord = df['y coordinate']
@@ -169,8 +170,9 @@ def read_arbor_condensed(fname):
 
     return G
 
+### this probably doesn't work anymore
 def main():
-    for arbor in os.listdir(RECONSTRUCTIONS_DIR):
+    for arbor in os.listdir((BASE_PATH + argv[1] + "/" + RECONSTRUCTIONS_DIR)):
         if len(argv) > 1 and argv[1] in arbor:
             print(arbor)
             G = read_arbor_full(arbor)

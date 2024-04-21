@@ -13,7 +13,7 @@
         <table class="header"><tr>
             <th class="sprout-image"><img src="Images/Sprout.png"></th>
             <th class="header-text">
-                <h1 class="title">Tomato Root Architecture</h1> <br />
+                <h1 class="title">Tomato Root Architecture: upload.php</h1> <br />
                 <div class="menu">
                     <a href = "home.html"><h3 class="menu-button cur-page">Tomato Home</h3></a>
                     <a href = "about.html"><h3 class="menu-button">About</h3></a>
@@ -97,6 +97,7 @@ function var_dump_pre($mixed = null) {
 */
 
 //echo var_dump_pre($_REQUEST['formData']);
+
 echo "<br> testing request var_dump<br>";
 var_dump($_REQUEST);
 
@@ -104,18 +105,18 @@ var_dump($_REQUEST);
 echo "<br>vardump files<br>";
 var_dump($_FILES);
 echo "<br><br>getting files using name field<br>";
-echo $_FILES["testingfileupload"]["name"];
-echo "<br>testing FILES['testingfileupload']['temp_name'] =";
-echo $_FILES['testingfileupload']["tmp_name"];
+echo $_FILES["userFileUploadInput"]["name"];
+echo "<br>testing FILES['userFileUploadInput']['temp_name'] =";
+echo $_FILES['userFileUploadInput']["tmp_name"];
 echo "<br>";
 
 echo "<br>get request data test: ";
-echo getRequestData("testingfileupload");
+echo getRequestData("userFileUploadInput");
 echo "<br>end of vardump code section<br><br>";
 
 echo "<hr>";
 echo '<br>testing file path setting<br>';
-$file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["testingfileupload"]["name"];
+$file_path = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/testing_file_path_".$_FILES["userFileUploadInput"]["name"];
 //echo "<script>document.getElementById('file_path').value = '$file_path';</script>";
 
 echo "<hr><br> testing request var_dump<br>";
@@ -127,17 +128,19 @@ $_REQUEST["file_path"] = $file_path;
 echo $_REQUEST["file_path"];
 
 /* Choose where to save the uploaded file */
-//$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["testingfileupload"]["name"];  #This saves the file with name bk -- this should be changed later
+//$location = "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/temp/bk_".$_FILES["userFileUploadInput"]["name"];  #This saves the file with name bk -- this should be changed later
 //echo "<BR>loacation: ".$location."<br>";
 echo "<BR>file_path: ".$file_path."<br>";
 
 echo "<BR>";
-if ( copy($_FILES['testingfileupload']["tmp_name"], $file_path) ) { 
+if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 
   echo 'Failure'; 
   print_r(error_get_last());
 }
+
+
 
 //echo "<BR><BR> testing shell script<BR>";
 
@@ -170,6 +173,20 @@ function generateDir(int $n): string {
     }
 
 ?>
+
+<script>
+        function getImage(systemPath, paretoPath) {
+            var systemDisplay = document.getElementById('systemDisplay');
+            systemDisplay.src = systemPath;
+            systemDisplay.class = "samplegraph";
+
+            var paretoDisplay = document.getElementById('paretoDisplay');
+            paretoDisplay.src = paretoPath;
+            paretoDisplay.class = "samplegraph";
+        }
+
+        getImage("Images/sample.jpeg", "Images/sample.jpeg");
+ </script>
 
 </body>
 </html>

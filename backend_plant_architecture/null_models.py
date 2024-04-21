@@ -3,7 +3,7 @@ import pareto_functions as pf
 from collections import defaultdict
 import optimal_midpoint as om
 from utils import toy_network, toy_network2, draw_arbor
-from constants import *
+from new_constants import *
 from read_arbor_reconstruction import read_arbor_full
 import pandas as pd
 import os
@@ -63,10 +63,10 @@ def get_null_function(method='random'):
         # placeholder for future null models
         pass
 
-def null_comparison(G, methods=None, ntrials=20):
+def null_comparison(G, pathPrefix, methods=None, ntrials=20):
     if methods == None:
         methods = ['random']
-    tree_costs_file = '%s/%s.csv' % (NULL_MODELS_DIR, G.graph['arbor name'])
+    tree_costs_file = '%s/%s.csv' % ((pathPrefix + NULL_MODELS_DIR), G.graph['arbor name'])
     first_time = not os.path.exists(tree_costs_file)
 
     with open(tree_costs_file, 'a') as f:
@@ -85,26 +85,26 @@ def null_comparison(G, methods=None, ntrials=20):
                 wiring, delay = pf.pareto_costs(N)
                 f.write('%s, %f, %f\n' % (method, wiring, delay))
 
-def analyze_null_models():
-    for reconstruction in os.listdir(RECONSTRUCTIONS_DIR):
+def analyze_null_models(pathPrefix):
+    for reconstruction in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):
         print("analyzing null models, creating null models for comparison")
         print(reconstruction)
-        G = read_arbor_full(reconstruction)
-        null_comparison(G)
+        G = read_arbor_full(reconstruction, pathPrefix)
+        null_comparison(G, pathPrefix)
 
-def write_null_models_file():
-    models_fname = '%s/models.csv' % STATISTICS_DIR
+def write_null_models_file(pathPrefix):
+    models_fname = '%s/models.csv' % (pathPrefix + STATISTICS_DIR)
     with open(models_fname, 'w') as models_file:
         models_file.write('arbor name, model, pareto front distance, ' +\
                                'pareto front scaling distance\n')
 
-        for arbor_file in os.listdir(NULL_MODELS_DIR):
+        for arbor_file in os.listdir(pathPrefix + NULL_MODELS_DIR):
             arbor_name = arbor_file.strip('.csv')
             print("writing null models files from null_models.py")
             print(arbor_name)
 
-            tree_costs_file = '%s/%s' % (NULL_MODELS_DIR, arbor_file)
-            pareto_front_file = '%s/%s' % (PARETO_FRONTS_DIR, arbor_file)
+            tree_costs_file = '%s/%s' % (pathPrefix + NULL_MODELS_DIR, arbor_file)
+            pareto_front_file = '%s/%s' % (pathPrefix + PARETO_FRONTS_DIR, arbor_file)
 
             tree_costs = pd.read_csv(tree_costs_file, skipinitialspace=True)
             pareto_front = pd.read_csv(pareto_front_file, skipinitialspace=True)

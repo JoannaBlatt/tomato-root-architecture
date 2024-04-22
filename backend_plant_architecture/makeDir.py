@@ -4,7 +4,7 @@ import sys
 def main():
     #print ('argument list', sys.argv)
     initialPath = sys.argv[1]
-    mainDirectory = initialPath.strip('.csv')
+    mainDirectory = initialPath.rstrip(".csv")
     
     STATISTICS_DIR = '%s/statistics' % mainDirectory
     RECONSTRUCTIONS_DIR = '%s/arbor-reconstructions' % mainDirectory

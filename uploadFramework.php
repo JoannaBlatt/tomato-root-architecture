@@ -78,8 +78,10 @@ session timer? Not sure where this should go or be implemented. I think it shoul
 */
 # section 1 : Create SessionID variable
 echo "<br><hr><br>section 1: create sessionID variable<BR>";
-$sessID = uniqid();
-echo "id created is: ".$sessID;
+#$sessID = uniqid();
+#echo "id created is: ".$sessID;
+$sessID = $_POST["sessionID"];
+echo "session id passed variable: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
 echo "<br><hr><br>section 2: create file path for saving the file<br>";
@@ -93,6 +95,10 @@ echo "<br><hr><br>";
 echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
 echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
+if (file_exists('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix)) {
+    echo "<BR>page was reloaded<BR>";
+    echo "<br>file_path: ".$_REQUEST["file_path"];
+} else {
 $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
 
 #section 4: save file to appropriate directory
@@ -112,10 +118,29 @@ if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
 
 echo '<br><hr><br>';
 
-# section 4: call shell script to process data and pass the sessionId and filename.
+# section 5: call shell script to process data and pass the sessionId and filename.
 # this should use path prefix and maybe file name. $pathPrefix
-echo "Section 4: run automated pipeline<br>";
+echo "Section 5: run automated pipeline<br>";
+echo "command used: ''/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix)";
 shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix);
+
+}
+# end of else section where it is not a reloaded page
+echo '<br><hr><br>';
+
+# section 6: slider and Images
+# this is where the slider and image stuff should go
+
+echo '<br><hr><br>';
+
+# section 7: js calls php about user leaving the page
+# this code doesn't necessarily have to go here, but it should go somewhere
+# return a variable, or call php with a variable
+
+echo '<br><hr><br>';
+
+# section 8: cleanup
+# this can be a separate php file where the path is passed to it, or it can be passed directly to the sh file.
 
 echo '<br><br><br>';
 /** Function: getRequestData()

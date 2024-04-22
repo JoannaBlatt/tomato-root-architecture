@@ -172,5 +172,29 @@ function generateDir(int $n): string {
 ?>
 
  </div>
+ <script>
+ //chat gpt suggested the below solution
+ // Function to execute after 30 minutes
+  function executeAfterDelay() {
+    // Send an asynchronous request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/cleanup.php?pathPrefix=<?php echo urlencode($pathPrefix); ?>', true);
+    xhr.send();
+  }
+
+  // Call executeAfterDelay function after 30 minutes
+  setTimeout(executeAfterDelay, 2 * 60 * 1000); // 30 minutes in milliseconds
+
+  window.addEventListener('beforeunload', function (event) {
+    // Prevent the default dialog box from showing (optional)
+    event.preventDefault();
+    
+    // Send an asynchronous request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'cleanup.php?pathPrefix=<?php echo urlencode($pathPrefix); ?>', true);
+    xhr.send();
+  });
+
+ </script>
 </body>
 </html>

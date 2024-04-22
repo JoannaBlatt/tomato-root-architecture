@@ -46,36 +46,6 @@ var_dump($_POST);
 echo "<br>end of vardump code section<br><br>";
 
 
-/*
- 
-
-
-upload.php:  
-saves file to appropriate subdirectory  
-passes sessionid/file-path to shell script
-
-shell script:  
-passes sessionId and filepath to automated_pipeline  
-
-Automated_pipeline:  
-processes the files by passing the sessionId/path to appropriate functions  
-(will need to modify functions to make use of this)  
-
-upload.php  
-Shows images that were produced using the slider  
-  (since upload.php already knows the sessionId and paths, this should be passed to js in upload.php)  
-has extra buttons  
-
-upload.php:  
-delete files when user leaves page  
-delete files after 30 minutes  
-
-upload.php javascript:  
-must grab images to display with slider
-alert when user has left the page
-
-session timer? Not sure where this should go or be implemented. I think it should probably be server side though.
-*/
 # section 1 : Create SessionID variable
 echo "<br><hr><br>section 1: create sessionID variable<BR>";
 #$sessID = uniqid();
@@ -93,6 +63,7 @@ echo "<br><hr><br>";
 
 # section 3: Pass path prefix to makeDirectories.sh which passes to makeDir.py which makes the directories needed
 echo "<br>section 3: pass pathPrefix to makeDir and make directories";
+
 
 echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
 #need to make this a not and reverse the if else sections
@@ -133,17 +104,19 @@ echo '<br><hr><br>';
 
 # section 6: slider and Images
 # this is where the slider and image stuff should go
+echo "<br>Section 6: images and slider";
 
 echo '<br><hr><br>';
 
-# section 7: js calls php about user leaving the page
-# this code doesn't necessarily have to go here, but it should go somewhere
-# return a variable, or call php with a variable
+# section 7: Download button
+# creates a zip file and sends it to user
+echo "<BR>Section 7: download button<BR>";
+echo '<button id="downloadButton">Download Zip File</button>';
+$vars = array('pathPrefix' => $pathPrefix, 'test' => "test");
+$querystring = http_build_query($vars);
+$url = 'downloadFile.php?' . $querystring;
 
-echo '<br><hr><br>';
 
-# section 8: cleanup
-# this can be a separate php file where the path is passed to it, or it can be passed directly to the sh file.
 
 echo '<br><br><br>';
 /** Function: getRequestData()
@@ -197,6 +170,19 @@ function generateDir(int $n): string {
     xhr.open('GET', 'cleanup.php?pathPrefix=<?php echo urlencode($pathPrefix); ?>', true);
     xhr.send();
   });
+
+  // chatgpt code for downloding a file 
+  document.getElementById('downloadButton').addEventListener('click', function() {
+    // Send a request to downloadFile.php to generate the zip file
+    fetch('downloadFile.php')
+        .then(response => {
+            // Once the zip file is generated, initiate its download
+            //window.location.href = 'downloadFile.php?download=true';
+            window.location.href = "<?php echo $url; ?>";
+            //window.location.href = 'downloadFile.php?download=true?pathPrefix=<?php #echo urlencode($pathPrefix); ?>';
+        })
+        .catch(error => console.error('Error downloading zip file:', error));
+});
 
  </script>
 </body>

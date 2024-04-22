@@ -59,7 +59,8 @@
         <h1 class="footer-text">Dev info here</h1>
     </div>
     <script>
-        localStorage.setItem('baseFolder', "/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/66248d9d5f701_file_065_3_S_day2/");
+        localStorage.setItem('baseFolder', "sampleInputData/");
+        localStorage.setItem('uploadName', "065_3_S_day2");
     </script>
     <script src="slider.js"></script>
 </body>

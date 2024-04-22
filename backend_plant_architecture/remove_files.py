@@ -5,6 +5,7 @@ It has a second function to go through each directory to remove the files.
 import os
 from constants import *
 import shutil
+import sys
 
 def delete_files_and_subdirectories(directory_path):
    """deletes files and subdirectories in the given directory"""
@@ -50,7 +51,12 @@ def remove_all_files():
 
 
 def main():
-    print("remove-files.py will now remove all files.")
+    #initialPath = sys.argv[1]
+    #mainDirectory = initialPath.rstrip('.csv')
+    #print("remove-files.py will now remove all files in", mainDirectory)
+    print("remove-files.py will now remove all files")
+
+
     remove_all_files()
 
 if __name__ == '__main__':

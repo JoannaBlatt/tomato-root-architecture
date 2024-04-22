@@ -8,13 +8,23 @@ function getImage(systemPath, paretoPath) {
     paretoDisplay.class = "samplegraph";
 }
 
+//const basePath = localStorage.getItem('baseFolder');    //passed variable containing the path
+//var uploadedFile = basePath.substring(75); // contains the
+//var drawingPath = basePath.substring(56) + 'pareto-front-drawings/';
+//var pdfFolder = drawingPath + uploadedFile + uploadedFile.slice(0, -1);
 const basePath = localStorage.getItem('baseFolder');
-var uploadedFile = basePath.substring(75);
-var drawingPath = basePath.substring(56) + 'pareto-front-drawings/';
-var pdfFolder = drawingPath + uploadedFile + uploadedFile.slice(0, -1);
+const uploadName = localStorage.getItem('uploadName');
+var drawingPath = basePath + 'pareto-front-drawings/';
+var pdfFolder = drawingPath + uploadName + '/' + uploadName;
 
-var originalSystem = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '.pdf';
-var originalFront = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '-pareto-front.pdf';
+
+//var originalSystem = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '.pdf';
+//var originalFront = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '-pareto-front.pdf';
+var originalSystem = pdfFolder + '.pdf';
+var originalFront = pdfFolder + '-pareto-front.pdf'; 
+
+document.getElementById('systemHeader').textContent = originalFront;
+
 
 const slider = document.getElementById('file-num');
 

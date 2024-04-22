@@ -80,14 +80,14 @@ session timer? Not sure where this should go or be implemented. I think it shoul
 echo "<br><hr><br>section 1: create sessionID variable<BR>";
 #$sessID = uniqid();
 #echo "id created is: ".$sessID;
-$sessID = $_POST["sessionID"];
+$sessID = $_POST["sessionID"];      #important
 echo "session id passed variable: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
 echo "<br><hr><br>section 2: create file path for saving the file<br>";
-$filename = $_FILES["userFileUploadInput"]["name"];
-$trimmedFileName = rtrim($filename, '.csv');
-$pathPrefix = $sessID."_file_".$trimmedFileName;
+$filename = $_FILES["userFileUploadInput"]["name"]; #important
+$trimmedFileName = rtrim($filename, '.csv');    #important
+$pathPrefix = $sessID."_file_".$trimmedFileName;    #important
 echo "<br>Path prefix: ".$pathPrefix;
 echo "<br><hr><br>";
 
@@ -95,20 +95,23 @@ echo "<br><hr><br>";
 echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
 echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
+#need to make this a not and reverse the if else sections
 if (file_exists('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix)) {
     echo "<BR>page was reloaded<BR>";
     echo "<br>file_path: ".$_REQUEST["file_path"];
 } else {
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
+#first time upload code
+$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);    #important
 
 #section 4: save file to appropriate directory
 echo "<hr><br>section 4: save file to appropriate directory<br>getRequestData file_path: ";
 echo getRequestData("file_path");
 echo "<br>set file path and now it is: ";
-$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;
+$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;    # important
 $_REQUEST["file_path"] = $file_path;
 echo $_REQUEST["file_path"];
 echo "<br>";
+# important code block
 if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 
@@ -122,7 +125,7 @@ echo '<br><hr><br>';
 # this should use path prefix and maybe file name. $pathPrefix
 echo "Section 5: run automated pipeline<br>";
 echo "command used: ''/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix)";
-shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix);
+shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix); #important
 
 }
 # end of else section where it is not a reloaded page

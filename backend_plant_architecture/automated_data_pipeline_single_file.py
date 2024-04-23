@@ -18,7 +18,7 @@ def main():
     n_m.analyze_null_models(pathPrefix)
     n_m.write_null_models_file(pathPrefix)
     print("auto_pipeline: creating pareto drawings using pareto_functions.py")
-    for arbor in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):   #not sure how to grab file without for loop
+    for arbor in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):
         print("auto_pipeline: reconstructing arbor:",arbor)
         G = read_arbor_full(arbor, pathPrefix)
         pf.viz_front(G, pathPrefix)

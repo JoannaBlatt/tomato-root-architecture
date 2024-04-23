@@ -35,6 +35,7 @@
                 <td class="graph"><img class="samplegraph" src="Images/sample-pareto.jpg"></td>
             </tr>
             <tr>
+<<<<<<< HEAD
 
                 <td class="center-button"><form action="uploadFramework.php" method="post" enctype="multipart/form-data" name="userFileUpload">
                         <?php
@@ -52,6 +53,22 @@
                         Use Sample File
                 </label>
                 </a>
+=======
+                <!-- user upload button code -->
+                <td><form action="upload.php" method="post" enctype="multipart/form-data" name="userFileUpload">
+                    <?php
+                    $sessID = uniqid();
+                     echo '<input type="hidden" id="sessionID" name="sessionID" value="'.$sessID.'">';
+                     ?>
+                    <label for="userFileUploadInput" class="upload">
+                        <input id="userFileUploadInput" type="file" name="userFileUploadInput" onchange="this.form.submit();" />
+                        Upload File
+                    </label>
+                </form></td>
+                <!-- sample upload button code -->
+                <td><form action="sample-upload.php" method="post">
+                   <input class="upload" type="submit" value="Use Sample File" />
+>>>>>>> refs/remotes/origin/main
                 </form></td>
             </tr>
         </table>

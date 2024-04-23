@@ -78,14 +78,16 @@ session timer? Not sure where this should go or be implemented. I think it shoul
 */
 # section 1 : Create SessionID variable
 echo "<br><hr><br>section 1: create sessionID variable<BR>";
-$sessID = uniqid();
-echo "id created is: ".$sessID;
+#$sessID = uniqid();
+#echo "id created is: ".$sessID;
+$sessID = $_POST["sessionID"];      #important
+echo "session id passed variable: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
 echo "<br><hr><br>section 2: create file path for saving the file<br>";
-$filename = $_FILES["userFileUploadInput"]["name"];
-$trimmedFileName = rtrim($filename, '.csv');
-$pathPrefix = $sessID."_file_".$trimmedFileName;
+$filename = $_FILES["userFileUploadInput"]["name"]; #important
+$trimmedFileName = rtrim($filename, '.csv');    #important
+$pathPrefix = $sessID."_file_".$trimmedFileName;    #important
 echo "<br>Path prefix: ".$pathPrefix;
 echo "<br><hr><br>";
 
@@ -93,16 +95,23 @@ echo "<br><hr><br>";
 echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
 echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
+#need to make this a not and reverse the if else sections
+if (file_exists('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix)) {
+    echo "<BR>page was reloaded<BR>";
+    echo "<br>file_path: ".$_REQUEST["file_path"];
+} else {
+#first time upload code
+$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);    #important
 
 #section 4: save file to appropriate directory
 echo "<hr><br>section 4: save file to appropriate directory<br>getRequestData file_path: ";
 echo getRequestData("file_path");
 echo "<br>set file path and now it is: ";
-$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;
+$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;    # important
 $_REQUEST["file_path"] = $file_path;
 echo $_REQUEST["file_path"];
 echo "<br>";
+# important code block
 if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) { 
   echo 'Success'; 
 } else { 
@@ -112,10 +121,29 @@ if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
 
 echo '<br><hr><br>';
 
-# section 4: call shell script to process data and pass the sessionId and filename.
+# section 5: call shell script to process data and pass the sessionId and filename.
 # this should use path prefix and maybe file name. $pathPrefix
-echo "Section 4: run automated pipeline<br>";
-shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix);
+echo "Section 5: run automated pipeline<br>";
+echo "command used: ''/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix)";
+shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix); #important
+
+}
+# end of else section where it is not a reloaded page
+echo '<br><hr><br>';
+
+# section 6: slider and Images
+# this is where the slider and image stuff should go
+
+echo '<br><hr><br>';
+
+# section 7: js calls php about user leaving the page
+# this code doesn't necessarily have to go here, but it should go somewhere
+# return a variable, or call php with a variable
+
+echo '<br><hr><br>';
+
+# section 8: cleanup
+# this can be a separate php file where the path is passed to it, or it can be passed directly to the sh file.
 
 echo '<br><br><br>';
 /** Function: getRequestData()
@@ -147,5 +175,29 @@ function generateDir(int $n): string {
 ?>
 
  </div>
+ <script>
+ //chat gpt suggested the below solution
+ // Function to execute after 30 minutes
+  function executeAfterDelay() {
+    // Send an asynchronous request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/cleanup.php?pathPrefix=<?php echo urlencode($pathPrefix); ?>', true);
+    xhr.send();
+  }
+
+  // Call executeAfterDelay function after 30 minutes
+  setTimeout(executeAfterDelay, 2 * 60 * 1000); // 30 minutes in milliseconds
+
+  window.addEventListener('beforeunload', function (event) {
+    // Prevent the default dialog box from showing (optional)
+    event.preventDefault();
+    
+    // Send an asynchronous request to the server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'cleanup.php?pathPrefix=<?php echo urlencode($pathPrefix); ?>', true);
+    xhr.send();
+  });
+
+ </script>
 </body>
 </html>

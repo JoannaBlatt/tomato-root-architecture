@@ -16,6 +16,7 @@ function getImage(systemPath, paretoPath) {
     paretoDisplay.class = "samplegraph";
 }
 
+<<<<<<< HEAD
 //portions of this were ai generated
 function zipFolder(folderPath) {
   var zip = new JSZip();
@@ -91,6 +92,25 @@ URL.revokeObjectURL(downloadLink.href);
 console.error('An error occurred while generating the ZIP file:', error);
 });
 }
+=======
+//const basePath = localStorage.getItem('baseFolder');    //passed variable containing the path
+//var uploadedFile = basePath.substring(75); // contains the
+//var drawingPath = basePath.substring(56) + 'pareto-front-drawings/';
+//var pdfFolder = drawingPath + uploadedFile + uploadedFile.slice(0, -1);
+const basePath = localStorage.getItem('baseFolder');
+const uploadName = localStorage.getItem('uploadName');
+var drawingPath = basePath + 'pareto-front-drawings/';
+var pdfFolder = drawingPath + uploadName + '/' + uploadName;
+
+
+//var originalSystem = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '.pdf';
+//var originalFront = drawingPath + uploadedFile + uploadedFile.slice(0, -1) + '-pareto-front.pdf';
+var originalSystem = pdfFolder + '.pdf';
+var originalFront = pdfFolder + '-pareto-front.pdf'; 
+
+document.getElementById('systemHeader').textContent = originalFront;
+
+>>>>>>> refs/remotes/origin/main
 
 const slider = document.getElementById('file-num');
 const sliderOut = document.getElementById('slider-out');

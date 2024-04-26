@@ -24,7 +24,7 @@
         </tr></table>
 
     </div>
-    <div class="home-body">
+    <div id="content" class="home-body">
         <table class="samples">
             <tr class="sample-titles">
                 <th class="img-title">Sample Upload</th>
@@ -35,30 +35,44 @@
                 <td class="graph"><img class="samplegraph" src="Images/sample-pareto.jpg"></td>
             </tr>
             <tr>
-                <!-- user upload button code -->
-                <td><form action="upload.php" method="post" enctype="multipart/form-data" name="userFileUpload">
-                    <?php
+
+                <td class="center-button"><form action="uploadFramework.php" method="post" enctype="multipart/form-data" name="userFileUpload">
+                        <?php
                     $sessID = uniqid();
                      echo '<input type="hidden" id="sessionID" name="sessionID" value="'.$sessID.'">';
                      ?>
-                    <label for="userFileUploadInput" class="upload">
-                        <input id="userFileUploadInput" type="file" name="userFileUploadInput" onchange="this.form.submit();" />
+                        <label for="userFileUploadInput" class="upload">
+                        <input id="userFileUploadInput" accept=".csv" type="file" name="userFileUploadInput" onchange="this.form.submit(); loadingPikmin(); "/>
                         Upload File
                     </label>
                 </form></td>
-                <!-- sample upload button code -->
-                <td><form action="sample-upload.php" method="post">
-                   <input class="upload" type="submit" value="Use Sample File" />
+                <td class="center-button"><form id="fakeButton" action="sample-upload.php" method="post">
+                <a href="sample-upload.php">
+                <label for="sampleFileUpload" class = "upload">
+                        Use Sample File
+                </label>
+                </a>
                 </form></td>
-
             </tr>
         </table>
-
+    </div>
+    <div id="loading-screen" class="loading-screen">
+        <h1 class="loading">Loading</h1>
+        <img class="pikmin" src="Images/pikmin.gif" />
     </div>
     <div class="footer-bar">
-        <h1 class="footer-text">Dev info here</h1>
+        <h1 class="footer-text">Backend by Dr. Arjun Chandrasekhar, UI Developed by Joanna Lewis and Zekkie McCormick</h1>
     </div>
     <script>
+                function loadingPikmin() {
+                        var loadingScreen = document.getElementById('loading-screen');
+                        var content = document.getElementById('content');
+
+                        loadingScreen.style.display = 'block';
+                        loadingScreen.style.width = '100%';
+                        loadingScreen.style.height = '100%';
+                        content.style.display = 'none';
+                }
     </script>
 </body>
 </html>

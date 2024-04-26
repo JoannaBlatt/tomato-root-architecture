@@ -21,8 +21,8 @@ def main():
     for arbor in os.listdir(pathPrefix + RECONSTRUCTIONS_DIR):
         print("auto_pipeline: reconstructing arbor:",arbor)
         G = read_arbor_full(arbor, pathPrefix)
-        pf.viz_front(G, pathPrefix)
-        pf.viz_trees(G, pathPrefix)
+        pf.viz_front(G, pathPrefix) # creates pareto front graph
+        pf.viz_trees(G, pathPrefix) # creates arbor drawings
  
 if __name__ == '__main__':
     main()

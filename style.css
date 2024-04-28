@@ -44,6 +44,12 @@
   a{
       text-decoration: none;
   }
+
+  .link{
+    color: inherit; /* Inherit the color from its parent */
+    text-decoration: underline; /* Add an underline to indicate it's a link */
+    cursor: pointer;
+  }
   
   /*HEADER STYLE*/
   

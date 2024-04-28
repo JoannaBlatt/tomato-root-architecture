@@ -71,100 +71,55 @@
 <div>
 
 <?php
-//echo "<hr><br> var_dump section<br>";
-//echo "<br> testing request var_dump<br>";
-var_dump($_REQUEST);
-
-//echo "<br>vardump files<br>";
-var_dump($_FILES);
-//echo "<br><br>getting files using name field<br>";
-//echo $_FILES["userFileUploadInput"]["name"];
-//echo "<br>testing FILES['userFileUploadInput']['temp_name'] =";
-//echo $_FILES['userFileUploadInput']["tmp_name"];
-//echo "<br>";
-//echo "<br>get request data test: ";
-//echo getRequestData("userFileUploadInput");
-
-//echo "<br>var_dump get then post:<br>";
-var_dump($_GET);
-//echo "<br>";
-var_dump($_POST);
-//echo "<br>end of vardump code section<br><br>";
-
-
-# section 1 : Create SessionID variable
-//echo "<br><hr><br>section 1: create sessionID variable<BR>";
-#$sessID = uniqid();
-#echo "id created is: ".$sessID;
+# section 1 : Grab SessionID variable passed from upload button
+//echo "<br><hr><br>section 1: Grab sessionID variable<BR>";
 $sessID = $_POST["sessionID"];      #important
 //echo "session id passed variable: ".$sessID;
 
 # section 2: Create file path using the sessionID and filename
 //echo "<br><hr><br>section 2: create file path for saving the file<br>";
-$filename = $_FILES["userFileUploadInput"]["name"]; #important
-$trimmedFileName = rtrim($filename, '.csv');    #important
-$pathPrefix = $sessID."_file_".$trimmedFileName;    #important
+$filename = $_FILES["userFileUploadInput"]["name"]; # the name of the file
+$trimmedFileName = rtrim($filename, '.csv');    # the name of the file without .csv
+$pathPrefix = $sessID."_file_".$trimmedFileName;    # the sessionID added with the trimmed filename
 //echo "<br>Path prefix: ".$pathPrefix;
-//echo "<br><hr><br>";
 
 # section 3: Pass path prefix to makeDirectories.sh which passes to makeDir.py which makes the directories needed
 //echo "<br>section 3: pass pathPrefix to makeDir and make directories";
 
-
-//echo '<BR>/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix;
-#need to make this a not and reverse the if else sections
+# future TODO: reverse the if statement so that there isn't a blank code block
 if (file_exists('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix)) {
    //echo "<BR>page was reloaded<BR>";
     //echo "<br>file_path: ".$_REQUEST["file_path"];
 } else {
-#first time upload code
-$output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);    #important
+#first time upload code: section 3f
+    #section 3f.1: make directories using pathPrefix
+    $output = shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/makeDirectories.sh '.$pathPrefix);
 
-#section 4: save file to appropriate directory
-//echo "<hr><br>section 4: save file to appropriate directory<br>getRequestData file_path: ";
-//echo getRequestData("file_path");
-//echo "<br>set file path and now it is: ";
-$file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;    # important
-$_REQUEST["file_path"] = $file_path;
-//echo $_REQUEST["file_path"];
-//echo "<br>";
-# important code block
-if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
-  //echo 'Success'; 
-} else {
-  //echo 'Failure'; 
-  //print_r(error_get_last());
-}
+    #section 3f.2: save file to appropriate directory
+    //echo "<hr><br>section 3f.2: save file to appropriate directory<br>getRequestData file_path: ";
+    $file_path = '/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/'.$pathPrefix."/arbor-reconstructions/".$filename;    # important
+    $_REQUEST["file_path"] = $file_path;
 
-//echo '<br><hr><br>';
+# important code block, actually saves the file with the appropriate name to the appropriate place
+# section 3f.3: save file using file name and $file_path (contains the path and name of file as a single string)
+    if ( copy($_FILES['userFileUploadInput']["tmp_name"], $file_path) ) {
+        //echo 'Success'; 
+    } else {
+        # future TODO: add error message and handle on website
+        //echo 'Failure'; 
+        //print_r(error_get_last());
+    }
 
-# section 5: call shell script to process data and pass the sessionId and filename.
-# this should use path prefix and maybe file name. $pathPrefix
-//echo "Section 5: run automated pipeline<br>";
-//echo "command used: ''/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix)";
-shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix); #important
+    # section 3f.4: call shell script to process data and pass the sessionId and filename.
+    //echo "Section 3f.4: run automated pipeline<br>";
+    //echo "command used: ''/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix)";
+    shell_exec('/home/dh_an3skk/arjun-chandrasekhar-teaching.com/tomato/runAutomatedPipeline.sh '.$pathPrefix); #important
 
 }
-# end of else section where it is not a reloaded page
-//echo '<br><hr><br>';
-
-# section 6: slider and Images
-# this is where the slider and image stuff should go
-//echo "<br>Section 6: images and slider";
-
-//echo '<br><hr><br>';
-
-# section 7: Download button
-# creates a zip file and sends it to user
-//echo "<BR>Section 7: download button<BR>";
-//echo '<button id="downloadButton">Download Zip File</button>';
-$vars = array('pathPrefix' => $pathPrefix, 'test' => "test");
-$querystring = http_build_query($vars);
-$url = 'downloadFile.php?' . $querystring;
+#end of section 3 / 3f
+# end of else section where it is first time upload page
 
 
-
-//echo '<br><br><br>';
 /** Function: getRequestData()
  * Cleans any requested data by converting HTML entities
  * (to avoid cross scripting attacks) and trims white space

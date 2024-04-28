@@ -21,7 +21,7 @@ def main():
     pathlib.Path(NULL_MODELS_DIR).mkdir(parents=True, exist_ok=True) 
 
 
-    # makes directories of all original paths
+    # makes directories of all original paths, this requires the old constants file though
 """
 #pathlib.Path(ORIGINAL_ROOT_NODES_DIR).mkdir(parents=True, exist_ok=True) 
 #pathlib.Path(CLEANED_ROOT_NODES_DIR).mkdir(parents=True, exist_ok=True) 

@@ -1,6 +1,8 @@
 """This file has a function to remove all the files in a directory.
 It has a second function to go through each directory to remove the files.
 
+It is not used in this project currently.
+
 """
 import os
 from constants import *
